@@ -156,8 +156,6 @@
             $("<div>")
                 .attr({id: closeId})
                 .hide()
-                // cursor: pointer; position: absolute; right:70px;
-                //  top:7px; color:#2662CC; font-weight:bold; font-size: 20px; font-family: Arial, sans serif
                 .css({
                     'cursor': 'pointer',
                     'position': 'absolute',
