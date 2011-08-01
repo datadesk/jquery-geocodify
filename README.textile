@@ -38,3 +38,7 @@ h2. Getting Started
 The example above will just log the selected address to the browser's console. It's a JavaScript representation of what is returned by "the Google Maps geocoder.":http://code.google.com/apis/maps/documentation/geocoding/#GeocodingResponses
 
 You can do a lot more than that. Your onSelect function could jump the user to another page, or update a map on that same page, like "this demo.":http://datadesk.github.com/jquery-geocodify/
+
+h2. Credits
+
+This library was inspired by the work of the "Chicago Tribune News Applications Team":https://github.com/newsapps.
