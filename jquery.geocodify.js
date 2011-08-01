@@ -5,9 +5,10 @@
         var height = opts.height || 35;
         var fontSize = opts.fontSize || "16px";
         var buttonValue = opts.buttonValue || "GO";
+        var regionBias = opts.regionBias || null;
         var onSelect  = opts.onSelect || function(ele) {alert('Jump to: ' + ele.formatted_address)};
         
-        var Geocode = function(id, callback) {
+        var Geocode = function(id, callback, regionBias) {
             this.previousSearch = null;
             this.google = new google.maps.Geocoder();
             this.fetch = function(query, force) {
@@ -25,7 +26,11 @@
                     $("#" + id + "-input").css("border", "1px solid #9C9C9C");
                     return false;
                 }
-                this.google.geocode({ 'address': query }, callback);
+                var params = { 'address': query };
+                if (regionBias) {
+                    params['region'] = regionBias;
+                }
+                this.google.geocode(params, callback);
             };
         };
         
@@ -186,7 +191,7 @@
                 .appendTo($this);
             
             // Bind our geocoding operation to the form
-            var app = new Geocode($this.attr("id"), callback);
+            var app = new Geocode($this.attr("id"), callback, regionBias);
             var input = $("#" + inputId);
             var button = $("#" + buttonId);
             setInterval(function(){app.fetch(input.val(), false)}, 250);
