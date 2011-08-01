@@ -165,7 +165,7 @@
                     'top': height * 0.2,
                     'color': '#2262CC',
                     'font-weight': 'bold',
-                    'font-size': fontSize * 0.8,
+                    'font-size': fontSize * 0.8
                 })
                 .addClass("geocodifyClose")
                 .html("X")
