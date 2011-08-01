@@ -11,7 +11,9 @@ Y88b  d88P 888       Y88b. .d88P Y88b  d88P Y88b. .d88P 888  .d88P  888   888   
 
 Autocomplete for address searches
 
-"Working Demonstration":http://datadesk.github.com/jquery-geocodify/
+h2. Demonstration
+
+"http://datadesk.github.com/jquery-geocodify/":http://datadesk.github.com/jquery-geocodify/
 
 h2. Getting Started
 
