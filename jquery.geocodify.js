@@ -46,7 +46,7 @@
             });
             var count = keep.length;
             if (count === 0) {
-                var ul = $("<ul>").css({'margin': 0, 'padding': 0});
+                var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
                 var li = $("<li>")
                     .html("No results found. Please refine your search.")
                     .css({
@@ -71,7 +71,7 @@
                 dropdown.hide();
                 close.hide();
             } else {
-                var ul = $("<ul>").css({'margin': 0, 'padding': 0});
+                var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
                 $.each(keep, function(i, val) {
                     $('<li>')
                         .html(val.formatted_address)
