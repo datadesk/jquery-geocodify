@@ -208,6 +208,7 @@
                     'font-size': fontSize
                 })
                 .addClass("geocodifyButton")
+                .focus(function() { $(this).val($(this).val()); })
                 .appendTo($this);
             
             // Add the close box
@@ -250,7 +251,7 @@
                 button = $("#" + buttonId),
                 dropdown = $("#" + dropdownId);
             setInterval(function(){app.fetch(input.val(), false)}, 250);
-            $this.submit(function(){app.fetch(input.val(), true);return false;});
+            $this.submit(function(){return false;});
             button.click(function(){app.fetch(input.val(), true);return false;});
             
             // Bind key up and down events
@@ -268,7 +269,7 @@
                             };
                         });
                         if (selectedIndex -1 < 0) {
-                            input.focus();
+                            input.val(input.val());
                         }
                         $(resultList[selectedIndex-1])
                             .addClass("selected")
@@ -285,12 +286,19 @@
                             };
                         });
                         if (selectedIndex -1 >= resultList.length) {
-                            input.focus();
+                            input.val(input.val());
                         }
                         $(resultList[selectedIndex+1])
                             .addClass("selected")
                             .css({'background-color': '#EEE'});
                         break;
+                    case keyCodes.RETURN:
+                        var resultList = $("li.selected", dropdown);
+                        if (resultList) {
+                            resultList.click();
+                        } else {
+                            app.fetch(input.val(), true);
+                        }
                     default:
                         break;
                 };
