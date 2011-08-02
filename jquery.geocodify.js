@@ -92,6 +92,13 @@
                             'text-align': 'left'
                         })
                         .click(function(){onSelect(val); dropdown.empty(); dropdown.hide(); close.hide();})
+                        .hover(
+                            function() { 
+                                $(this).css({'background-color': '#EEE', 'cursor': 'pointer'});
+                            },
+                            function() {
+                                $(this).css({'background-color': 'white', 'cursor': 'auto'});
+                            })
                         .appendTo(ul);
                 });
                 ul.appendTo(dropdown);
