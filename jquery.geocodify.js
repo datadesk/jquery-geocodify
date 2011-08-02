@@ -268,7 +268,7 @@
                             };
                         });
                         if (selectedIndex -1 < 0) {
-                            break;
+                            input.focus();
                         }
                         $(resultList[selectedIndex-1])
                             .addClass("selected")
@@ -284,8 +284,8 @@
                                     .css({'background-color': 'white'});
                             };
                         });
-                        if (selectedIndex -1 > resultList.length) {
-                            break;
+                        if (selectedIndex -1 >= resultList.length) {
+                            input.focus();
                         }
                         $(resultList[selectedIndex+1])
                             .addClass("selected")
