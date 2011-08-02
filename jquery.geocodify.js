@@ -7,7 +7,7 @@
             buttonValue = opts.buttonValue || "GO",
             regionBias = opts.regionBias || null,
             viewportBias = opts.viewportBias || null,
-            onSelect  = opts.onSelect || function(ele) {alert('Jump to: ' + ele.formatted_address)}
+            onSelect  = opts.onSelect || function(ele) {alert('Jump to: ' + ele.formatted_address)},
             acceptableAddressTypes = opts.acceptableAddressTypes || [
                 'street_address',
                 'route',
@@ -32,7 +32,19 @@
                 'street_number',
                 'floor',
                 'room'
-            ];
+            ],
+        keyCodes = {
+            UP: 38,
+            DOWN: 40,
+            DEL: 46,
+            TAB: 9,
+            RETURN: 13,
+            ESC: 27,
+            COMMA: 188,
+            PAGEUP: 33,
+            PAGEDOWN: 34,
+            BACKSPACE: 8
+        };
         
         var Geocode = function(id, callback, regionBias, viewportBias) {
             this.previousSearch = null;
@@ -235,10 +247,54 @@
             // Bind our geocoding operation to the form
             var app = new Geocode($this.attr("id"), callback, regionBias, viewportBias),
                 input = $("#" + inputId),
-                button = $("#" + buttonId);
+                button = $("#" + buttonId),
+                dropdown = $("#" + dropdownId);
             setInterval(function(){app.fetch(input.val(), false)}, 250);
             $this.submit(function(){app.fetch(input.val(), true);return false;});
             button.click(function(){app.fetch(input.val(), true);return false;});
+            
+            // Bind key up and down events
+            $this.bind(($.browser.opera ? "keypress" : "keydown"), function(event) {
+                switch(event.keyCode) {
+                    case keyCodes.UP:
+                        var resultList = $("li", dropdown);
+                        var selectedIndex = 0;
+                        $.each(resultList, function(i, li) {
+                            if ( $(li).hasClass("selected") ) {
+                                selectedIndex = i;
+                                $(li)
+                                    .removeClass("selected")
+                                    .css({'background-color': 'white'});
+                            };
+                        });
+                        if (selectedIndex -1 < 0) {
+                            break;
+                        }
+                        $(resultList[selectedIndex-1])
+                            .addClass("selected")
+                            .css({'background-color': '#EEE'});
+                        break;
+                    case keyCodes.DOWN:
+                        var resultList = $("li", dropdown);
+                        var selectedIndex = -1;
+                        $.each(resultList, function(i, li) {
+                            if ( $(li).hasClass("selected") ) {
+                                selectedIndex = i;
+                                $(li).removeClass("selected")
+                                    .css({'background-color': 'white'});
+                            };
+                        });
+                        if (selectedIndex -1 > resultList.length) {
+                            break;
+                        }
+                        $(resultList[selectedIndex+1])
+                            .addClass("selected")
+                            .css({'background-color': '#EEE'});
+                        break;
+                    default:
+                        break;
+                };
+            });
 
         });
     };
