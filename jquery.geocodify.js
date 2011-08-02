@@ -208,7 +208,6 @@
                     'font-size': fontSize
                 })
                 .addClass("geocodifyButton")
-                //.focus(function() { $(this).val($(this).val()); })
                 .appendTo($this);
             
             // Add the close box
@@ -268,10 +267,9 @@
                                     .css({'background-color': 'white'});
                             };
                         });
-                        //if (selectedIndex -1 < 0) {
-                        //    input.val(input.val());
-                        //    break;
-                        //}
+                        if (selectedIndex -1 < 0) {
+                            break;
+                        }
                         $(resultList[selectedIndex-1])
                             .addClass("selected")
                             .css({'background-color': '#EEE'});
@@ -286,10 +284,9 @@
                                     .css({'background-color': 'white'});
                             };
                         });
-                        //if (selectedIndex -1 >= resultList.length) {
-                        //    input.val(input.val());
-                        //    break;
-                        //}
+                        if (selectedIndex -1 >= resultList.length) {
+                            break;
+                        }
                         $(resultList[selectedIndex+1])
                             .addClass("selected")
                             .css({'background-color': '#EEE'});
