@@ -1,13 +1,13 @@
 (function( $ ){
     $.fn.geocodify = function(options) {
-        var opts = options || {};
-        var width = opts.width || 400;
-        var height = opts.height || 35;
-        var fontSize = opts.fontSize || "16px";
-        var buttonValue = opts.buttonValue || "GO";
-        var regionBias = opts.regionBias || null;
-        var viewportBias = opts.viewportBias || null;
-        var onSelect  = opts.onSelect || function(ele) {alert('Jump to: ' + ele.formatted_address)};
+        var opts = options || {},
+            width = opts.width || 400,
+            height = opts.height || 35,
+            fontSize = opts.fontSize || "16px",
+            buttonValue = opts.buttonValue || "GO",
+            regionBias = opts.regionBias || null,
+            viewportBias = opts.viewportBias || null,
+            onSelect  = opts.onSelect || function(ele) {alert('Jump to: ' + ele.formatted_address)};
         
         var Geocode = function(id, callback, regionBias, viewportBias) {
             this.previousSearch = null;
@@ -39,10 +39,10 @@
         };
         
         var callback = function(results, status) {
-            var id = $.data(document.body, 'geocoderId');
-            var dropdown = $("#" + id + "-dropdown");
-            var input = $("#" + id + "-input");
-            var close = $("#" + id + "-close");
+            var id = $.data(document.body, 'geocoderId'),
+                dropdown = $("#" + id + "-dropdown"),
+                input = $("#" + id + "-input"),
+                close = $("#" + id + "-close");
             dropdown.empty();
             var keep = new Array();
             $.each(results, function(i, val) {
@@ -179,7 +179,7 @@
                 .appendTo($this);
 
             // Add the dropdown box
-            var dropdownId = $this.attr("id") + "-dropdown"
+            var dropdownId = $this.attr("id") + "-dropdown";
             $("<div>")
                 .attr({id: dropdownId})
                 .css({
@@ -195,9 +195,9 @@
                 .appendTo($this);
             
             // Bind our geocoding operation to the form
-            var app = new Geocode($this.attr("id"), callback, regionBias, viewportBias);
-            var input = $("#" + inputId);
-            var button = $("#" + buttonId);
+            var app = new Geocode($this.attr("id"), callback, regionBias, viewportBias),
+                input = $("#" + inputId),
+                button = $("#" + buttonId);
             setInterval(function(){app.fetch(input.val(), false)}, 250);
             $this.submit(function(){app.fetch(input.val(), true);return false;});
             button.click(function(){app.fetch(input.val(), true);return false;});
