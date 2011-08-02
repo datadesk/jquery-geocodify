@@ -270,6 +270,7 @@
                         });
                         if (selectedIndex -1 < 0) {
                             input.val(input.val());
+                            break;
                         }
                         $(resultList[selectedIndex-1])
                             .addClass("selected")
@@ -287,6 +288,7 @@
                         });
                         if (selectedIndex -1 >= resultList.length) {
                             input.val(input.val());
+                            break;
                         }
                         $(resultList[selectedIndex+1])
                             .addClass("selected")
@@ -299,6 +301,7 @@
                         } else {
                             app.fetch(input.val(), true);
                         }
+                        break;
                     default:
                         break;
                 };
