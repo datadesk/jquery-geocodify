@@ -7,7 +7,32 @@
             buttonValue = opts.buttonValue || "GO",
             regionBias = opts.regionBias || null,
             viewportBias = opts.viewportBias || null,
-            onSelect  = opts.onSelect || function(ele) {alert('Jump to: ' + ele.formatted_address)};
+            onSelect  = opts.onSelect || function(ele) {alert('Jump to: ' + ele.formatted_address)}
+            acceptableAddressTypes = opts.acceptableAddressTypes || [
+                'street_address',
+                'route',
+                'intersection',
+                'political',
+                'country',
+                'administrative_area_level_1',
+                'administrative_area_level_2',
+                'administrative_area_level_3 ',
+                'colloquial_area',
+                'locality',
+                'sublocality',
+                'neighborhood',
+                'premise',
+                'subpremise',
+                'postal_code',
+                'natural_feature',
+                'airport',
+                'park',
+                'point_of_interest',
+                'post_box',
+                'street_number',
+                'floor',
+                'room'
+            ];
         
         var Geocode = function(id, callback, regionBias, viewportBias) {
             this.previousSearch = null;
@@ -39,11 +64,13 @@
         };
         
         var callback = function(results, status) {
+            // Line up all the object we'll be playing with
             var id = $.data(document.body, 'geocoderId'),
                 dropdown = $("#" + id + "-dropdown"),
                 input = $("#" + id + "-input"),
                 close = $("#" + id + "-close");
             
+            // Define what will happen when the form is reset
             var reset = function () {
                 dropdown.empty();
                 dropdown.hide();
@@ -54,15 +81,18 @@
             };
             reset();
             
+            // Loop through the results and filter out precision
+            // levels we will not accept.
             var keep = new Array();
             $.each(results, function(i, val) {
-                $.each(val.types, function(j, jal) {
-                    if (jal === 'street_address' || jal === 'intersection' || jal === 'postal_code' || jal === 'locality') {
+                $.each(val.types, function(ii, type) {
+                    if (new RegExp(type).test(acceptableAddressTypes.join("|"))) {
                         keep.push(val);
                         return false;
                     }
                 });
             });
+            
             var count = keep.length;
             if (count === 0) {
                 var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
