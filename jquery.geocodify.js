@@ -43,7 +43,17 @@
                 dropdown = $("#" + id + "-dropdown"),
                 input = $("#" + id + "-input"),
                 close = $("#" + id + "-close");
-            dropdown.empty();
+            
+            var reset = function () {
+                dropdown.empty();
+                dropdown.hide();
+                close.hide();
+                input.css({
+                    "border": "1px solid #9C9C9C"
+                });
+            };
+            reset();
+            
             var keep = new Array();
             $.each(results, function(i, val) {
                 $.each(val.types, function(j, jal) {
@@ -70,15 +80,10 @@
                 dropdown.show();
                 $("li", dropdown).css("cursor", "default");
                 close.show();
-                close.click(function() {
-                    dropdown.empty();
-                    dropdown.hide();
-                    close.hide();
-                })
+                close.click(reset)
             } else if (count === 1 && $.data(document.body, 'forceGeocode')) {
                 onSelect(results[0]);
-                dropdown.hide();
-                close.hide();
+                reset();
             } else {
                 var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
                 $.each(keep, function(i, val) {
@@ -91,7 +96,7 @@
                             'list-style-type': 'none',
                             'text-align': 'left'
                         })
-                        .click(function(){onSelect(val); dropdown.empty(); dropdown.hide(); close.hide();})
+                        .click(function(){onSelect(val); reset();})
                         .hover(
                             function() { 
                                 $(this).css({'background-color': '#EEE', 'cursor': 'pointer'});
@@ -109,11 +114,7 @@
                 });
                 dropdown.show();
                 close.show();
-                close.click(function() {
-                    dropdown.empty();
-                    dropdown.hide();
-                    close.hide();
-                })
+                close.click(reset)
             }
         };
         
