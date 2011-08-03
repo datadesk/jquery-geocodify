@@ -186,6 +186,7 @@
                     'top': 0,
                     'left': 0,
                     'width': width,
+                    'line-height': fontSize,
                     'font-size': fontSize
                 })
                 .addClass("geocodifyInput")
