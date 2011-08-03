@@ -2,12 +2,11 @@
     $.fn.geocodify = function(options) {
         var opts = options || {},
             width = opts.width || 400,
-            height = opts.height || 35,
             fontSize = opts.fontSize || "16px",
             buttonValue = opts.buttonValue || "GO",
             regionBias = opts.regionBias || null,
             viewportBias = opts.viewportBias || null,
-            onSelect  = opts.onSelect || function(ele) {alert('Jump to: ' + ele.formatted_address)},
+            onSelect  = opts.onSelect || function(ele) { alert('Jump to: ' + ele.formatted_address )},
             acceptableAddressTypes = opts.acceptableAddressTypes || [
                 'street_address',
                 'route',
@@ -33,18 +32,18 @@
                 'floor',
                 'room'
             ],
-        keyCodes = {
-            UP: 38,
-            DOWN: 40,
-            DEL: 46,
-            TAB: 9,
-            RETURN: 13,
-            ESC: 27,
-            COMMA: 188,
-            PAGEUP: 33,
-            PAGEDOWN: 34,
-            BACKSPACE: 8
-        };
+            keyCodes = {
+                UP: 38,
+                DOWN: 40,
+                DEL: 46,
+                TAB: 9,
+                RETURN: 13,
+                ESC: 27,
+                COMMA: 188,
+                PAGEUP: 33,
+                PAGEDOWN: 34,
+                BACKSPACE: 8
+            };
         
         var Geocode = function(id, callback, regionBias, viewportBias) {
             this.previousSearch = null;
@@ -136,6 +135,7 @@
                             'margin-left': 0,
                             'padding': '5px 0 5px 8px',
                             'list-style-type': 'none',
+                            'font-size': fontSize,
                             'text-align': 'left'
                         })
                         .click(function(){onSelect(val); reset();})
@@ -170,7 +170,6 @@
                     'position': 'relative',
                     'margin': 0,
                     'padding': 0,
-                    'height': height,
                     'width': width,
                     'z-index': 9001
                 });
@@ -181,17 +180,18 @@
             $('<input>')
                 .attr({type: 'text', id: inputId})
                 .css({
-                    'padding': '0 0 0 5px',
+                    'padding': '5px',
+                    'margin': 0,
                     'position': 'absolute',
                     'top': 0,
                     'left': 0,
                     'width': width,
-                    'font-size': fontSize,
-                    'height': height
+                    'font-size': fontSize
                 })
                 .addClass("geocodifyInput")
                 .appendTo($this);
             document.getElementById(inputId).setAttribute("autocomplete", "off");
+            var input = $("#" + inputId);
             
             // Add the submit button
             var buttonId = $this.attr("id") + "-button";
@@ -202,13 +202,12 @@
                     'position': 'absolute',
                     'top': 0,
                     'left': width + 10,
-                    'height': height - 2,
-                    'padding': '1px 6px',
-                    'margin': '1px 0',
+                    'padding': '4px',
                     'font-size': fontSize
                 })
                 .addClass("geocodifyButton")
                 .appendTo($this);
+            var button = $("#" + buttonId);
             
             // Add the close box
             var closeId = $this.attr("id") + "-close";
@@ -218,8 +217,9 @@
                 .css({
                     'cursor': 'pointer',
                     'position': 'absolute',
-                    'left': width * 0.96,
-                    'top': height * 0.2,
+                    'right': "6px",
+                    'top': "6px",
+                    'height': input.height() + 12,
                     'color': '#2262CC',
                     'font-weight': 'bold',
                     'font-size': fontSize * 0.8
@@ -234,7 +234,7 @@
                 .attr({id: dropdownId})
                 .css({
                     'position': 'absolute',
-                    'top': height,
+                    'top': input.height() + 12,
                     'left': 0,
                     'border': '1px solid #CCC',
                     'width': width - 2,
@@ -243,12 +243,10 @@
                 .addClass("geocodifyDropdown")
                 .hide()
                 .appendTo($this);
+            var dropdown = $("#" + dropdownId);
             
             // Bind our geocoding operation to the form
-            var app = new Geocode($this.attr("id"), callback, regionBias, viewportBias),
-                input = $("#" + inputId),
-                button = $("#" + buttonId),
-                dropdown = $("#" + dropdownId);
+            var app = new Geocode($this.attr("id"), callback, regionBias, viewportBias);
             setInterval(function(){app.fetch(input.val(), false)}, 250);
             $this.submit(function(){return false;});
             button.click(function(){app.fetch(input.val(), true);return false;});
