@@ -2,7 +2,7 @@
     $.fn.geocodify = function(options) {
         var opts = options || {},
             width = opts.width || 400,
-            height = opts.height || 32,
+            height = opts.height || 25,
             fontSize = opts.fontSize || "16px",
             buttonValue = opts.buttonValue || "GO",
             regionBias = opts.regionBias || null,
@@ -181,13 +181,13 @@
             $('<input>')
                 .attr({type: 'text', id: inputId})
                 .css({
-                    'padding': '5px',
+                    'padding': '2px',
                     'margin': 0,
                     'position': 'absolute',
                     'top': 0,
                     'left': 0,
                     'width': width,
-                    'height': height,
+                    'height': height - 1,
                     'line-height': fontSize,
                     'font-size': fontSize
                 })
@@ -225,8 +225,7 @@
                     'top': "6px",
                     'height': input.height() + 12,
                     'color': '#2262CC',
-                    'font-weight': 'bold',
-                    'font-size': fontSize * 0.8
+                    'font-weight': 'bold'
                 })
                 .addClass("geocodifyClose")
                 .html("X")
@@ -238,10 +237,10 @@
                 .attr({id: dropdownId})
                 .css({
                     'position': 'absolute',
-                    'top': input.height() + 12,
+                    'top': input.height() + 6,
                     'left': 0,
                     'border': '1px solid #CCC',
-                    'width': width - 2,
+                    'width': width + 2,
                     'z-index': 8001
                 })
                 .addClass("geocodifyDropdown")
