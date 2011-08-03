@@ -2,7 +2,7 @@
     $.fn.geocodify = function(options) {
         var opts = options || {},
             width = opts.width || 400,
-            height = opts.height || 34,
+            height = opts.height || 32,
             fontSize = opts.fontSize || "16px",
             buttonValue = opts.buttonValue || "GO",
             regionBias = opts.regionBias || null,
