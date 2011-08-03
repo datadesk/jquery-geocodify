@@ -203,6 +203,7 @@
                     'top': 0,
                     'left': width + 10,
                     'padding': '4px',
+                    'margin': 0,
                     'font-size': fontSize
                 })
                 .addClass("geocodifyButton")
