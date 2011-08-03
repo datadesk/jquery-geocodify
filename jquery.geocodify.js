@@ -50,8 +50,6 @@
             this.previousSearch = null;
             this.google = new google.maps.Geocoder();
             this.fetch = function(query, force) {
-                $.data(document.body, 'forceGeocode', force);
-                $.data(document.body, 'geocoderId', id);
                 if (query === this.previousSearch && !(force)) {
                     return false;
                 };
@@ -71,95 +69,96 @@
                 if (viewportBias) {
                     params['bounds'] = viewportBias;
                 };
-                this.google.geocode(params, callback);
+                this.google.geocode(params, onGeocode(id, force));
             };
         };
         
-        var onGeocode = function(results, status) {
-            // Line up all the object we'll be playing with
-            var id = $.data(document.body, 'geocoderId'),
-                dropdown = $("#" + id + "-dropdown"),
-                input = $("#" + id + "-input"),
-                close = $("#" + id + "-close");
-            
-            // Define what will happen when the form is reset
-            var reset = function () {
-                dropdown.empty();
-                dropdown.hide();
-                close.hide();
-                input.css({
-                    "border": "1px solid #9C9C9C"
-                });
-            };
-            reset();
-            
-            // Loop through the results and filter out precision
-            // levels we will not accept.
-            var keep = new Array();
-            $.each(results, function(i, val) {
-                $.each(val.types, function(ii, type) {
-                    if (new RegExp(type).test(acceptableAddressTypes.join("|"))) {
-                        keep.push(val);
-                        return false;
-                    }
-                });
-            });
-            
-            var count = keep.length;
-            if (count === 0) {
-                var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
-                var li = $("<li>")
-                    .html("No results found. Please refine your search.")
-                    .css({
-                            'cursor': 'pointer',
-                            'margin-left': 0,
-                            'padding': '5px 0 5px 8px',
-                            'list-style-type': 'none',
-                            'text-align': 'left'
-                        })
-                    .appendTo(ul)
-                ul.appendTo(dropdown);
-                dropdown.show();
-                $("li", dropdown).css("cursor", "default");
-                close.show();
-                close.click(reset)
-            } else if (count === 1 && $.data(document.body, 'forceGeocode')) {
-                onSelect(results[0]);
+        var onGeocode = function(id, force) {
+            return function(results, status) {
+                // Line up all the object we'll be playing with
+                var dropdown = $("#" + id + "-dropdown"),
+                    input = $("#" + id + "-input"),
+                    close = $("#" + id + "-close");
+                
+                // Define what will happen when the form is reset
+                var reset = function () {
+                    dropdown.empty();
+                    dropdown.hide();
+                    close.hide();
+                    input.css({
+                        "border": "1px solid #9C9C9C"
+                    });
+                };
                 reset();
-            } else {
-                var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
-                $.each(keep, function(i, val) {
-                    $('<li>')
-                        .html(val.formatted_address)
+                
+                // Loop through the results and filter out precision
+                // levels we will not accept.
+                var keep = new Array();
+                $.each(results, function(i, val) {
+                    $.each(val.types, function(ii, type) {
+                        if (new RegExp(type).test(acceptableAddressTypes.join("|"))) {
+                            keep.push(val);
+                            return false;
+                        }
+                    });
+                });
+                
+                var count = keep.length;
+                if (count === 0) {
+                    var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
+                    var li = $("<li>")
+                        .html("No results found. Please refine your search.")
                         .css({
-                            'cursor': 'pointer',
-                            'margin-left': 0,
-                            'padding': '5px 0 5px 8px',
-                            'list-style-type': 'none',
-                            'font-size': fontSize,
-                            'text-align': 'left'
-                        })
-                        .click(function(){onSelect(val); reset();})
-                        .hover(
-                            function() { 
-                                $(this).css({'background-color': '#EEE', 'cursor': 'pointer'});
-                            },
-                            function() {
-                                $(this).css({'background-color': 'white', 'cursor': 'auto'});
+                                'cursor': 'pointer',
+                                'margin-left': 0,
+                                'padding': '5px 0 5px 8px',
+                                'list-style-type': 'none',
+                                'text-align': 'left'
                             })
-                        .appendTo(ul);
-                });
-                ul.appendTo(dropdown);
-                input.css({
-                    "border-top": "1px solid #2662CC",
-                    "border-right": "1px solid #2662CC",
-                    "border-left": "1px solid #2662CC"
-                });
-                dropdown.show();
-                close.show();
-                close.click(reset)
+                        .appendTo(ul)
+                    ul.appendTo(dropdown);
+                    dropdown.show();
+                    $("li", dropdown).css("cursor", "default");
+                    close.show();
+                    close.click(reset)
+                } else if (count === 1 && force) {
+                    onSelect(results[0]);
+                    reset();
+                } else {
+                    var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
+                    $.each(keep, function(i, val) {
+                        $('<li>')
+                            .html(val.formatted_address)
+                            .css({
+                                'cursor': 'pointer',
+                                'margin-left': 0,
+                                'padding': '5px 0 5px 8px',
+                                'list-style-type': 'none',
+                                'font-size': fontSize,
+                                'text-align': 'left'
+                            })
+                            .click(function(){onSelect(val); reset();})
+                            .hover(
+                                function() { 
+                                    $(this).css({'background-color': '#EEE', 'cursor': 'pointer'});
+                                },
+                                function() {
+                                    $(this).css({'background-color': 'white', 'cursor': 'auto'});
+                                })
+                            .appendTo(ul);
+                    });
+                    ul.appendTo(dropdown);
+                    input.css({
+                        "border-top": "1px solid #2662CC",
+                        "border-right": "1px solid #2662CC",
+                        "border-left": "1px solid #2662CC"
+                    });
+                    dropdown.show();
+                    close.show();
+                    close.click(reset)
+                }
             }
-        };
+        }
         
         return this.each(function() {
             var $this = $(this);
