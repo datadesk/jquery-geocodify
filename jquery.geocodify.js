@@ -240,7 +240,7 @@
                     'top': input.height() + 6,
                     'left': 0,
                     'border': '1px solid #CCC',
-                    'width': width + 2,
+                    'width': width - 2,
                     'z-index': 8001
                 })
                 .addClass("geocodifyDropdown")
