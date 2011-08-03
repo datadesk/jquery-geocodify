@@ -74,7 +74,7 @@
             };
         };
         
-        var callback = function(results, status) {
+        var onGeocode = function(results, status) {
             // Line up all the object we'll be playing with
             var id = $.data(document.body, 'geocoderId'),
                 dropdown = $("#" + id + "-dropdown"),
@@ -248,7 +248,7 @@
             var dropdown = $("#" + dropdownId);
             
             // Bind our geocoding operation to the form
-            var app = new Geocode($this.attr("id"), callback, regionBias, viewportBias);
+            var app = new Geocode($this.attr("id"), onGeocode, regionBias, viewportBias);
             setInterval(function(){app.fetch(input.val(), false)}, 250);
             $this.submit(function(){return false;});
             button.click(function(){app.fetch(input.val(), true);return false;});
