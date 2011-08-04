@@ -8,6 +8,7 @@
             regionBias = opts.regionBias || null,
             viewportBias = opts.viewportBias || null,
             onSelect  = opts.onSelect || function(ele) { alert('Jump to: ' + ele.formatted_address )},
+            prepSearch = opts.prepSearch || null,
             acceptableAddressTypes = opts.acceptableAddressTypes || [
                 'street_address',
                 'route',
@@ -61,6 +62,9 @@
                     $("#" + id + "-close").hide();
                     $("#" + id + "-input").css("border", "1px solid #9C9C9C");
                     return false;
+                }
+                if (prepSearch) {
+                    query = prepSearch(query);
                 }
                 var params = { 'address': query };
                 if (regionBias) {
