@@ -58,126 +58,6 @@
                 $.extend( settings, options );
             }
             
-            var Geocode = function(id, callback, regionBias, viewportBias) {
-                this.previousSearch = null;
-                this.google = new google.maps.Geocoder();
-                this.fetch = function(query, force) {
-                    if (query === this.previousSearch && !(force)) {
-                        return false;
-                    };
-                    if (query === settings.initialText) {
-                        return false;
-                    };
-                    this.previousSearch = query;
-                    var qLength = query.length;
-                    if (qLength < settings.minimumCharacters && !(force)) {
-                        $("#" + id + "-dropdown").html("");
-                        $("#" + id + "-dropdown").hide();
-                        $("#" + id + "-close").hide();
-                        $("#" + id + "-input").css("border", "1px solid #9C9C9C");
-                        return false;
-                    }
-                    if (settings.prepSearchString) {
-                        query = settings.prepSearchString(query);
-                    }
-                    var params = { 'address': query };
-                    if (regionBias) {
-                        params['region'] = regionBias;
-                    };
-                    if (viewportBias) {
-                        params['bounds'] = viewportBias;
-                    };
-                    this.google.geocode(params, onGeocode(id, force));
-                };
-            };
-            
-            var onGeocode = function(id, force) {
-                return function(results, status) {
-                    // Line up all the object we'll be playing with
-                    var dropdown = $("#" + id + "-dropdown"),
-                        input = $("#" + id + "-input"),
-                        close = $("#" + id + "-close");
-                    
-                    // Define what will happen when the form is reset
-                    var reset = function () {
-                        dropdown.empty();
-                        dropdown.hide();
-                        close.hide();
-                        input.css({
-                            "border": "1px solid #9C9C9C"
-                        });
-                    };
-                    reset();
-                    
-                    // Loop through the results and filter out precision
-                    // levels we will not accept.
-                    var keep = new Array();
-                    $.each(results, function(i, val) {
-                        $.each(val.types, function(ii, type) {
-                            if (new RegExp(type).test(settings.acceptableAddressTypes.join("|"))) {
-                                keep.push(val);
-                                return false;
-                            }
-                        });
-                    });
-                    
-                    var count = keep.length;
-                    if (count === 0) {
-                        var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
-                        var li = $("<li>")
-                            .html("No results found. Please refine your search.")
-                            .css({
-                                    'cursor': 'pointer',
-                                    'margin-left': 0,
-                                    'padding': '5px 0 5px 8px',
-                                    'list-style-type': 'none',
-                                    'text-align': 'left'
-                                })
-                            .appendTo(ul)
-                        ul.appendTo(dropdown);
-                        dropdown.show();
-                        $("li", dropdown).css("cursor", "default");
-                        close.show();
-                        close.click(reset)
-                    } else if (count === 1 && force) {
-                        settings.onSelect(results[0]);
-                        reset();
-                    } else {
-                        var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
-                        $.each(keep, function(i, val) {
-                            $('<li>')
-                                .html(val.formatted_address)
-                                .css({
-                                    'cursor': 'pointer',
-                                    'margin-left': 0,
-                                    'padding': '5px 0 5px 8px',
-                                    'list-style-type': 'none',
-                                    'font-size': settings.fontSize,
-                                    'text-align': 'left'
-                                })
-                                .click(function(){settings.onSelect(val); reset();})
-                                .hover(
-                                    function() { 
-                                        $(this).css({'background-color': '#EEE', 'cursor': 'pointer'});
-                                    },
-                                    function() {
-                                        $(this).css({'background-color': 'white', 'cursor': 'auto'});
-                                    })
-                                .appendTo(ul);
-                        });
-                        ul.appendTo(dropdown);
-                        input.css({
-                            "border-top": "1px solid #2662CC",
-                            "border-right": "1px solid #2662CC",
-                            "border-left": "1px solid #2662CC"
-                        });
-                        dropdown.show();
-                        close.show();
-                        close.click(reset)
-                    }
-                }
-            }
-            
             // Clear out any existing stuff inside the form and set its style
             $this
                 .empty()
@@ -209,6 +89,8 @@
                 .appendTo($this);
             document.getElementById(inputId).setAttribute("autocomplete", "off");
             var input = $("#" + inputId);
+            
+            // Fill in initialText, if it is specified
             if (settings.initialText) {
                 input.val(settings.initialText);
                 input.focus(function() {
@@ -254,6 +136,7 @@
                 .addClass("geocodifyClose")
                 .html("X")
                 .appendTo($this);
+            var close = $("#" + closeId);
 
             // Add the dropdown box
             var dropdownId = $this.attr("id") + "-dropdown";
@@ -272,12 +155,123 @@
                 .appendTo($this);
             var dropdown = $("#" + dropdownId);
             
+            // Define what will happen when the form is reset
+            $this.reset = function () {
+                dropdown.empty();
+                dropdown.hide();
+                close.hide();
+                input.css({
+                    "border": "1px solid #9C9C9C"
+                });
+            };
+            
+            // Create the bizness for how the geocoder work
+            $this.previousSearch = null;
+            $this.google = new google.maps.Geocoder();
+            $this.fetch = function(query, force) {
+                if (query === $this.previousSearch && !(force)) {
+                    return false;
+                };
+                if (query === settings.initialText) {
+                    return false;
+                };
+                $this.previousSearch = query;
+                var qLength = query.length;
+                if (qLength < settings.minimumCharacters && !(force)) {
+                    dropdown.html("");
+                    dropdown.hide();
+                    close.hide();
+                    input.css("border", "1px solid #9C9C9C");
+                    return false;
+                }
+                if (settings.prepSearchString) {
+                    query = settings.prepSearchString(query);
+                }
+                var params = { 'address': query };
+                if (settings.regionBias) {
+                    params['region'] = settings.regionBias;
+                };
+                if (settings.viewportBias) {
+                    params['bounds'] = settings.viewportBias;
+                };
+                this.google.geocode(params, $this.onGeocode(force));
+            };
+            $this.onGeocode = function(force) {
+                return function(results, status) {
+                    $this.reset();
+                    // Loop through the results and filter out precision
+                    // levels we will not accept.
+                    var keep = new Array();
+                    $.each(results, function(i, val) {
+                        $.each(val.types, function(ii, type) {
+                            if (new RegExp(type).test(settings.acceptableAddressTypes.join("|"))) {
+                                keep.push(val);
+                                return false;
+                            }
+                        });
+                    });
+                    var count = keep.length;
+                    if (count === 0) {
+                        var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
+                        var li = $("<li>")
+                            .html("No results found. Please refine your search.")
+                            .css({
+                                    'cursor': 'pointer',
+                                    'margin-left': 0,
+                                    'padding': '5px 0 5px 8px',
+                                    'list-style-type': 'none',
+                                    'text-align': 'left'
+                                })
+                            .appendTo(ul)
+                        ul.appendTo(dropdown);
+                        dropdown.show();
+                        $("li", dropdown).css("cursor", "default");
+                        close.show();
+                        close.click($this.reset)
+                    } else if (count === 1 && force) {
+                        settings.onSelect(results[0]);
+                        $this.reset();
+                    } else {
+                        var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
+                        $.each(keep, function(i, val) {
+                            $('<li>')
+                                .html(val.formatted_address)
+                                .css({
+                                    'cursor': 'pointer',
+                                    'margin-left': 0,
+                                    'padding': '5px 0 5px 8px',
+                                    'list-style-type': 'none',
+                                    'font-size': settings.fontSize,
+                                    'text-align': 'left'
+                                })
+                                .click(function(){settings.onSelect(val); $this.reset();})
+                                .hover(
+                                    function() { 
+                                        $(this).css({'background-color': '#EEE', 'cursor': 'pointer'});
+                                    },
+                                    function() {
+                                        $(this).css({'background-color': 'white', 'cursor': 'auto'});
+                                    })
+                                .appendTo(ul);
+                        });
+                        ul.appendTo(dropdown);
+                        input.css({
+                            "border-top": "1px solid #2662CC",
+                            "border-right": "1px solid #2662CC",
+                            "border-left": "1px solid #2662CC"
+                        });
+                        dropdown.show();
+                        close.show();
+                        close.click($this.reset)
+                    }
+                }
+            };
+            
             // Bind our geocoding operation to the form
-            var app = new Geocode($this.attr("id"), onGeocode, settings.regionBias, settings.viewportBias);
-            setInterval(function(){app.fetch(input.val(), false)}, 250);
+            setInterval(function(){$this.fetch(input.val(), false)}, 250);
             $this.submit(function(){return false;});
             if (button) {
-                button.click(function(){app.fetch(input.val(), true);return false;});
+                button.click(function(){$this.fetch(input.val(), true);return false;});
             }
             
             // Bind key up and down events
@@ -323,7 +317,7 @@
                         if (resultList) {
                             resultList.click();
                         } else {
-                            app.fetch(input.val(), true);
+                            $this.fetch(input.val(), true);
                         }
                         break;
                     default:
