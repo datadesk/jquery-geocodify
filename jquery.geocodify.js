@@ -201,6 +201,8 @@
                 };
                 this.google.geocode(params, $this.onGeocode(force));
             };
+            
+            // The callback that runs after the geocoder returns
             $this.onGeocode = function(force) {
                 return function(results, status) {
                     $this.reset();
