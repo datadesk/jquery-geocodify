@@ -1,66 +1,163 @@
-<html>
-<head>
-    <title>jQuery-Geocodify: Autocomplete for address searches</title>
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> 
-    <script type="text/javascript" src="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js"></script>
-    <script type="text/javascript">
-        function updateMap(ele) {
-          $("#map").show();
-          var lng = ele.geometry.location.lng();
-          var lat = ele.geometry.location.lat();
-          var myLatlng = new google.maps.LatLng(lat, lng);
-          var myOptions = {
-            zoom: 10,
-            center: myLatlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-          };
-          var map = new google.maps.Map(document.getElementById("map"), myOptions);
-          var marker = new google.maps.Marker({
-              position: myLatlng, 
-              map: map,
-              title: ele.formatted_address
-          }); 
-          $("#label").html(ele.formatted_address);
-        };
-        $(document).ready(function() {
-            $("#geocoder").geocodify({
-                onSelect: function (ele) { updateMap(ele); },
-                initialText: "Enter an address..."
-            });
-        });
-    </script>
-    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-    <style type="text/css">
-        body {font-family:"Oswald";}
-        form input {font-family: "Oswald";}
-        pre { background-color: #EEE; margin: 0; 0; border: 1px solid #DDD; padding:5px; color:#444; border-radius:3px; width: 800px;}
-        code { padding: 0; }
-        #kicker { width:800px; text-align:left; margin: 10px 0 5px 0; font-size:20px; font-style:italic;}
-        #deck { margin: 5px 0 50px 0; width: 800px; text-align:right; font-size:14px; font-style:italic;}
-        #map { width:300px; height:300px; border:1px solid #444; margin: 100px 0 0 0; display:none;}
-        #label { width: 800px; font-size:12px; margin: 5px 0 0 0; }
-    </style>
-</head>
-<body>
-<a href="http://github.com/datadesk/jquery-geocodify"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-    <center>
-        <div id="kicker">JQuery</div>
-        <pre><code>                                                                 
- .d8888b.  8888888888 .d88888b.   .d8888b.   .d88888b.  8888888b. 8888888 8888888888 Y88b   d88P 
-d88P  Y88b 888       d88P" "Y88b d88P  Y88b d88P" "Y88b 888  "Y88b  888   888         Y88b d88P  
-888    888 888       888     888 888    888 888     888 888    888  888   888          Y88o88P   
-888        8888888   888     888 888        888     888 888    888  888   8888888       Y888P    
-888  88888 888       888     888 888        888     888 888    888  888   888            888     
-888    888 888       888     888 888    888 888     888 888    888  888   888            888     
-Y88b  d88P 888       Y88b. .d88P Y88b  d88P Y88b. .d88P 888  .d88P  888   888            888     
- "Y8888P88 8888888888 "Y88888P"   "Y8888P"   "Y88888P"  8888888P" 8888888 888            888     
-                                                                                     </code></pre>
-        <div id="deck">Autocomplete for address searches</div>
-        <form id="geocoder"></form>
-        <div id="map"></div>
-        <div id="label"></div>
-    </center>
-</body>
-</html>
 
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Features &mdash; jquery-geocodify v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/latimes.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="jquery-geocodify v0.1 documentation" href="#" />
+    <link rel="next" title="Demonstrations" href="demonstrations.html" /> 
+  </head>
+  <body>              
+<a href="http://www.github.com/datadesk/jquery-geocodify/">
+    <img style="position: absolute; top: 0; right: 0; border: 0;" src="_static/forkme.png" alt="Fork me on GitHub">
+</a>
+<div class="banner">
+    <h1><a href="#"><img src="_static/banner.png"></a></h1>
+    <h2>Version 0.1 :: <a href="http://github.com/datadesk">http://github.com/datadesk</a></h2>
+</div>
+<div class="banner-underline"></div> 
+  
+    
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <blockquote class="epigraph">
+<div>Autocomplete for address searches</div></blockquote>
+<div class="section" id="features">
+<h1>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Morph an empty form into a search box ready to auto-complete address searches using Google&#8217;s geocoder</li>
+<li>Handle the user&#8217;s selected location however you&#8217;d like by specifying a simple function</li>
+<li>Bias the results using Google&#8217;s built-in viewport and region biasing</li>
+<li>Tweak search strings before they&#8217;re sent and filter geocoder results before they appear</li>
+<li>Customize the default text, sizing and other styles</li>
+</ul>
+<hr></div>
+<div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>Import all the dependencies in your page&#8217;s head</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://maps.googleapis.com/maps/api/js?sensor=false&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+</div>
+<p>Add an empty form to your page&#8217;s body and initialize it with instructions for what function to run when the user selects an address</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocoder&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocoder&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
+        <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ele</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span> <span class="p">}</span>
+    <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</div>
+<p>The example above will just log the selected address to the browser&#8217;s console. It&#8217;s a JavaScript representation of what is returned by <a class="reference external" href="http://code.google.com/apis/maps/documentation/geocoding/#GeocodingResponses">the Google Maps geocoder.</a></p>
+<hr></div>
+<div class="section" id="demonstrations">
+<h1>Demonstrations<a class="headerlink" href="#demonstrations" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demonstrations.html">Demonstrations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="demonstrations.html#the-basic-box">The basic box</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr></div>
+<div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>TK ...</p>
+<hr></div>
+<div class="section" id="downloads">
+<h1>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h1>
+<p>TK ...</p>
+<hr></div>
+<div class="section" id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<p>TK ...</p>
+<hr></div>
+<div class="section" id="credits">
+<h1>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h1>
+<p>TK ...</p>
+<hr></div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Features</a></li>
+<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li><a class="reference internal" href="#demonstrations">Demonstrations</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#downloads">Downloads</a></li>
+<li><a class="reference internal" href="#changelog">Changelog</a></li>
+<li><a class="reference internal" href="#credits">Credits</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="demonstrations.html"
+                        title="next chapter">Demonstrations</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    <div style="height:20px; clear:both;"></div>
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+        <div class="smalllogo"><a href="http://www.latimes.com"><img src="_static/logo.png" alt="latimes.com"></a></div>
+        <div class="credits">
+            &copy; Copyright 2011, Ben Welsh.
+          Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        </div>     
+    </div>
+  </body>
+</html>

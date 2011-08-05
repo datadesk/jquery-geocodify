@@ -1,0 +1,114 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Demonstrations &mdash; jquery-geocodify v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/latimes.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="jquery-geocodify v0.1 documentation" href="index.html" />
+    <link rel="prev" title="Features" href="index.html" /> 
+  </head>
+  <body>              
+<a href="http://www.github.com/datadesk/jquery-geocodify/">
+    <img style="position: absolute; top: 0; right: 0; border: 0;" src="_static/forkme.png" alt="Fork me on GitHub">
+</a>
+<div class="banner">
+    <h1><a href="index.html"><img src="_static/banner.png"></a></h1>
+    <h2>Version 0.1 :: <a href="http://github.com/datadesk">http://github.com/datadesk</a></h2>
+</div>
+<div class="banner-underline"></div> 
+  
+    
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="demonstrations">
+<h1>Demonstrations<a class="headerlink" href="#demonstrations" title="Permalink to this headline">¶</a></h1>
+<p>Examples of jquery-geocodify in action. <a class="reference internal" href="index.html"><em>Full documentation is elsewhere</em></a>.</p>
+<hr>
+ <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+ <script type="text/javascript" src="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js"></script><div class="section" id="the-basic-box">
+<h2>The basic box<a class="headerlink" href="#the-basic-box" title="Permalink to this headline">¶</a></h2>
+<form id="geocoder"></form>
+<script type="text/javascript">
+     $("#geocoder").geocodify({
+         onSelect: function (ele) { console.log(ele); }
+     });
+</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocoder&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocoder&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
+         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ele</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span> <span class="p">}</span>
+     <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Demonstrations</a><ul>
+<li><a class="reference internal" href="#the-basic-box">The basic box</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Features</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/demonstrations.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    <div style="height:20px; clear:both;"></div>
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+        <div class="smalllogo"><a href="http://www.latimes.com"><img src="_static/logo.png" alt="latimes.com"></a></div>
+        <div class="credits">
+            &copy; Copyright 2011, Ben Welsh.
+          Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        </div>     
+    </div>
+  </body>
+</html>
