@@ -128,14 +128,14 @@
                 .css({
                     'cursor': 'pointer',
                     'position': 'absolute',
-                    'right': "6px",
-                    'top': "6px",
+                    'right': "5px",
+                    'top': "5px",
                     'height': input.height() + 12,
                     'color': '#2262CC',
                     'font-weight': 'bold'
                 })
                 .addClass("geocodifyClose")
-                .html("X")
+                .html("&#215;")
                 .appendTo($this);
             var close = $("#" + closeId);
 
