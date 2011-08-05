@@ -9,6 +9,7 @@
           'regionBias': null,
           'viewportBias': null,
           'onSelect': function(ele) { alert('Jump to: ' + ele.formatted_address )},
+          'minimumCharacters': 5,
           'prepSearchString': null,
           'initialText': null,
           'acceptableAddressTypes': [
@@ -69,7 +70,7 @@
                     };
                     this.previousSearch = query;
                     var qLength = query.length;
-                    if (qLength < 5 && !(force)) {
+                    if (qLength < settings.minimumCharacters && !(force)) {
                         $("#" + id + "-dropdown").html("");
                         $("#" + id + "-dropdown").hide();
                         $("#" + id + "-close").hide();
