@@ -9,6 +9,7 @@
             viewportBias = opts.viewportBias || null,
             onSelect  = opts.onSelect || function(ele) { alert('Jump to: ' + ele.formatted_address )},
             prepSearchString = opts.prepSearchString || null,
+            initialText = opts.initialText || null,
             acceptableAddressTypes = opts.acceptableAddressTypes || [
                 'street_address',
                 'route',
@@ -52,6 +53,9 @@
             this.google = new google.maps.Geocoder();
             this.fetch = function(query, force) {
                 if (query === this.previousSearch && !(force)) {
+                    return false;
+                };
+                if (query === initialText) {
                     return false;
                 };
                 this.previousSearch = query;
@@ -198,6 +202,15 @@
                 .appendTo($this);
             document.getElementById(inputId).setAttribute("autocomplete", "off");
             var input = $("#" + inputId);
+            if (initialText) {
+                console.log(initialText);
+                input.val(initialText);
+                input.focus(function() {
+                    if (input.val() == initialText) {
+                        input.val("");
+                    }
+                });
+            }
             
             // Add the submit button
             var buttonId = $this.attr("id") + "-button";
