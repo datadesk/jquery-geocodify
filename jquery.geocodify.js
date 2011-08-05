@@ -3,7 +3,7 @@
 
         var settings = {
           'width' : 400,
-          'height' : 32,
+          'height' : 27,
           'fontSize': '16px',
           'buttonValue': 'GO',
           'regionBias': null,
@@ -69,6 +69,7 @@
                     'margin': 0,
                     'padding': 0,
                     'width': settings.width,
+                    'height': settings.height,
                     'font-size': settings.fontSize,
                     'z-index': 9001
                 });
@@ -79,13 +80,16 @@
             $('<input>')
                 .attr({type: 'text', id: inputId})
                 .css({
-                    'padding': '2px',
+                    'padding': '0',
                     'margin': 0,
                     'position': 'absolute',
                     'top': 0,
                     'left': 0,
                     'width': settings.width,
-                    'height': settings.height - 1,
+                    'height': settings.height,
+                    'outline-style': 'none',
+                    'outline-width': 'initial',
+                    'outline-color': 'initial',
                     'line-height': settings.fontSize,
                     'font-size': settings.fontSize
                 })
@@ -149,10 +153,10 @@
                 .attr({id: dropdownId})
                 .css({
                     'position': 'absolute',
-                    'top': input.height() + 6,
+                    'top': input.height() + 2,
                     'left': 0,
                     'border': '1px solid #CCC',
-                    'width': settings.width - 2,
+                    'width': settings.width - 1,
                     'z-index': 8001
                 })
                 .addClass("geocodifyDropdown")
@@ -250,7 +254,7 @@
                         dropdown.show();
                         $("li", dropdown).css("cursor", "default");
                         close.show();
-                        close.click($this.reset)
+                        close.click($this.reset);
                     } else if (count === 1 && force) {
                         settings.onSelect(results[0]);
                         $this.reset();
@@ -358,5 +362,3 @@
         });
     };
 })( jQuery );
-
-
