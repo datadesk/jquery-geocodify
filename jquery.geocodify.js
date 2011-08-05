@@ -218,22 +218,24 @@
                 });
             }
             
-            // Add the submit button
-            var buttonId = $this.attr("id") + "-button";
-            $('<input>')
-                .attr({type: 'button', id: buttonId,
-                    value: settings.buttonValue})
-                .css({
-                    'position': 'absolute',
-                    'top': 0,
-                    'left': settings.width + 10,
-                    'padding': '4px',
-                    'margin': 0,
-                    'font-size': settings.fontSize
-                })
-                .addClass("geocodifyButton")
-                .appendTo($this);
-            var button = $("#" + buttonId);
+            if (settings.buttonValue !== "") {
+                // Add the submit button
+                var buttonId = $this.attr("id") + "-button";
+                $('<input>')
+                    .attr({type: 'button', id: buttonId,
+                           value: settings.buttonValue})
+                    .css({
+                        'position': 'absolute',
+                        'top': 0,
+                        'left': settings.width + 10,
+                        'padding': '4px',
+                        'margin': 0,
+                        'font-size': settings.fontSize
+                    })
+                    .addClass("geocodifyButton")
+                    .appendTo($this);
+                var button = $("#" + buttonId);
+            }
             
             // Add the close box
             var closeId = $this.attr("id") + "-close";
@@ -274,7 +276,9 @@
             var app = new Geocode($this.attr("id"), onGeocode, settings.regionBias, settings.viewportBias);
             setInterval(function(){app.fetch(input.val(), false)}, 250);
             $this.submit(function(){return false;});
-            button.click(function(){app.fetch(input.val(), true);return false;});
+            if (button) {
+                button.click(function(){app.fetch(input.val(), true);return false;});
+            }
             
             // Bind key up and down events
             $this.bind(($.browser.opera ? "keypress" : "keydown"), function(event) {
