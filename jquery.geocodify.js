@@ -69,6 +69,7 @@
                     'margin': 0,
                     'padding': 0,
                     'width': settings.width,
+                    'font-size': settings.fontSize,
                     'z-index': 9001
                 });
             document.getElementById($this.attr("id")).setAttribute("autocomplete", "off");
@@ -113,9 +114,10 @@
                         'position': 'absolute',
                         'top': 0,
                         'left': settings.width + 10,
-                        'padding': '4px',
+                        'padding': '2px',
                         'margin': 0,
-                        'font-size': settings.fontSize
+                        'font-size': "90%",
+                        //'border-width': '1px'
                     })
                     .addClass("geocodifyButton")
                     .appendTo($this);
