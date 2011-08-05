@@ -132,7 +132,8 @@
                     'top': "5px",
                     'height': input.height() + 12,
                     'color': '#2262CC',
-                    'font-weight': 'bold'
+                    'font-weight': 'bold',
+                    'font-family': 'Arial, sans-serif'
                 })
                 .addClass("geocodifyClose")
                 .html("&#215;")
