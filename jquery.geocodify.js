@@ -244,7 +244,7 @@
                     'font-weight': 'bold'
                 })
                 .addClass("geocodifyClose")
-                .html("X")
+                .html("&#215;")
                 .appendTo($this);
 
             // Add the dropdown box
