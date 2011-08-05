@@ -116,8 +116,7 @@
                         'left': settings.width + 10,
                         'padding': '2px',
                         'margin': 0,
-                        'font-size': "90%",
-                        //'border-width': '1px'
+                        'font-size': "90%"
                     })
                     .addClass("geocodifyButton")
                     .appendTo($this);
