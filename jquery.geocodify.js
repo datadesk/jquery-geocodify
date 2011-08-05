@@ -203,7 +203,6 @@
             document.getElementById(inputId).setAttribute("autocomplete", "off");
             var input = $("#" + inputId);
             if (initialText) {
-                console.log(initialText);
                 input.val(initialText);
                 input.focus(function() {
                     if (input.val() == initialText) {
