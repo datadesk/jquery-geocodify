@@ -25,7 +25,8 @@
         };
         $(document).ready(function() {
             $("#geocoder").geocodify({
-                onSelect: function (ele) { updateMap(ele); }
+                onSelect: function (ele) { updateMap(ele); },
+                initialText: "Enter an address..."
             });
         });
     </script>
