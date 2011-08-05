@@ -14,6 +14,7 @@
           'filterResults': null,
           'errorHandler': null,
           'initialText': null,
+          'noResultsText': "No results found. Please refine your search.",
           'acceptableAddressTypes': [
                 'street_address',
                 'route',
@@ -204,6 +205,7 @@
                 return function(results, status) {
                     $this.reset();
                     
+                    // Handle errors
                     if (status != google.maps.GeocoderStatus.OK) {
                         if (settings.errorHandler) {
                             settings.errorHandler(results, status);
@@ -232,7 +234,7 @@
                     if (count === 0) {
                         var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
                         var li = $("<li>")
-                            .html("No results found. Please refine your search.")
+                            .html(settings.noResultsText)
                             .css({
                                     'cursor': 'pointer',
                                     'margin-left': 0,
