@@ -218,7 +218,7 @@
                 });
             }
             
-            if (settings.buttonValue !== "") {
+            if (settings.buttonValue) {
                 // Add the submit button
                 var buttonId = $this.attr("id") + "-button";
                 $('<input>')
