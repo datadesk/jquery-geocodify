@@ -231,6 +231,8 @@
                     } else if (count === 1 && force) {
                         settings.onSelect(results[0]);
                         $this.reset();
+                        $this.previousSearch = results[0].formatted_address;
+                        input.val(results[0].formatted_address);
                     } else {
                         var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
                         $.each(keep, function(i, val) {
@@ -244,7 +246,12 @@
                                     'font-size': settings.fontSize,
                                     'text-align': 'left'
                                 })
-                                .click(function(){settings.onSelect(val); $this.reset();})
+                                .click(function(){
+                                    settings.onSelect(val);
+                                    $this.reset();
+                                    $this.previousSearch = val.formatted_address;
+                                    input.val(val.formatted_address);
+                                })
                                 .hover(
                                     function() { 
                                         $(this).css({'background-color': '#EEE', 'cursor': 'pointer'});
