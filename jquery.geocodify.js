@@ -12,6 +12,7 @@
           'minimumCharacters': 5,
           'prepSearchString': null,
           'filterResults': null,
+          'errorHandler': null,
           'initialText': null,
           'acceptableAddressTypes': [
                 'street_address',
@@ -169,6 +170,7 @@
             
             // Create the bizness for how the geocoder work
             $this.previousSearch = null;
+            $this.searchCache = {};
             $this.google = new google.maps.Geocoder();
             $this.fetch = function(query, force) {
                 if (query === $this.previousSearch && !(force)) {
@@ -201,6 +203,13 @@
             $this.onGeocode = function(force) {
                 return function(results, status) {
                     $this.reset();
+                    
+                    if (status != google.maps.GeocoderStatus.OK) {
+                        if (settings.errorHandler) {
+                            settings.errorHandler(results, status);
+                            return false;
+                        };
+                    };
                     
                     // Loop through the results and filter out precision
                     // levels we will not accept.
