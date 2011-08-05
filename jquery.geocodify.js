@@ -11,6 +11,7 @@
           'onSelect': function(ele) { alert('Jump to: ' + ele.formatted_address )},
           'minimumCharacters': 5,
           'prepSearchString': null,
+          'filterResults': null,
           'initialText': null,
           'acceptableAddressTypes': [
                 'street_address',
@@ -199,6 +200,7 @@
             $this.onGeocode = function(force) {
                 return function(results, status) {
                     $this.reset();
+                    
                     // Loop through the results and filter out precision
                     // levels we will not accept.
                     var keep = new Array();
@@ -210,6 +212,12 @@
                             }
                         });
                     });
+                    
+                    // Further filter the results if a function has been provided
+                    if (settings.filterResults) {
+                        keep = settings.filterResults(keep);
+                    };
+                    
                     var count = keep.length;
                     if (count === 0) {
                         var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
