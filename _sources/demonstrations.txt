@@ -293,3 +293,48 @@ Sets the number of characters that must be entered before the geocoder starts to
 .. raw:: html
 
     <hr>
+
+Prep search string
+------------------
+
+A function that treats the search string before it is passed to the geocoder. This example adds "California" to the search if the user has no provided it.
+
+.. raw:: html
+
+   <form id="geocodify-prep-search-string"></form>
+   <script type="text/javascript">
+        $("#geocodify-prep-search-string").geocodify({
+            onSelect: function (result) { alert(result); },
+            prepSearchString: function(query) { 
+                var pattr = /\sca\s|\scalifornia\s/gi;
+                var match = query.match(pattr);
+                if (!match) {
+                    return query + ' California';
+                } else {
+                    return query;
+                }
+            }
+        });
+   </script>
+
+.. code-block:: html
+
+   <form id="geocodify-prep-search-string"></form>
+   <script type="text/javascript">
+        $("#geocodify-prep-search-string").geocodify({
+            onSelect: function (result) { alert(result); },
+            prepSearchString: function(query) { 
+                var pattr = /\sca\s|\scalifornia\s/gi;
+                var match = query.match(pattr);
+                if (!match) {
+                    return query + ' California';
+                } else {
+                    return query;
+                }
+            }
+        });
+   </script>
+
+.. raw:: html
+
+    <hr>

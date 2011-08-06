@@ -248,6 +248,41 @@
 </pre></div>
 </div>
 <hr></div>
+<div class="section" id="prep-search-string">
+<h2>Prep search string<a class="headerlink" href="#prep-search-string" title="Permalink to this headline">¶</a></h2>
+<p>A function that treats the search string before it is passed to the geocoder. This example adds &#8220;California&#8221; to the search if the user has no provided it.</p>
+<form id="geocodify-prep-search-string"></form>
+<script type="text/javascript">
+     $("#geocodify-prep-search-string").geocodify({
+         onSelect: function (result) { alert(result); },
+         prepSearchString: function(query) {
+             var pattr = /\sca\s|\scalifornia\s/gi;
+             var match = query.match(pattr);
+             if (!match) {
+                 return query + ' California';
+             } else {
+                 return query;
+             }
+         }
+     });
+</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-prep-search-string&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-prep-search-string&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
+         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
+         <span class="nx">prepSearchString</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span> <span class="p">{</span>
+             <span class="kd">var</span> <span class="nx">pattr</span> <span class="o">=</span> <span class="sr">/\sca\s|\scalifornia\s/gi</span><span class="p">;</span>
+             <span class="kd">var</span> <span class="nx">match</span> <span class="o">=</span> <span class="nx">query</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">pattr</span><span class="p">);</span>
+             <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">match</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="k">return</span> <span class="nx">query</span> <span class="o">+</span> <span class="s1">&#39; California&#39;</span><span class="p">;</span>
+             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                 <span class="k">return</span> <span class="nx">query</span><span class="p">;</span>
+             <span class="p">}</span>
+         <span class="p">}</span>
+     <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</div>
+<hr></div>
 </div>
 
 
@@ -267,6 +302,7 @@
 <li><a class="reference internal" href="#initial-text">Initial text</a></li>
 <li><a class="reference internal" href="#no-results-text">No results text</a></li>
 <li><a class="reference internal" href="#minimum-characters">Minimum characters</a></li>
+<li><a class="reference internal" href="#prep-search-string">Prep search string</a></li>
 </ul>
 </li>
 </ul>
