@@ -181,9 +181,9 @@ You can customize the size of the text input and submit button with a combinatio
 
 .. raw:: html
 
-   <form id="geocodify-font-size"></form>
+   <form id="geocodify-sizing"></form>
    <script type="text/javascript">
-        $("#geocodify-font-size").geocodify({
+        $("#geocodify-sizing").geocodify({
             onSelect: function (result) { alert(result); },
             fontSize: "12px",
             height: 20,
@@ -193,13 +193,42 @@ You can customize the size of the text input and submit button with a combinatio
 
 .. code-block:: html
 
-   <form id="geocodify-font-size"></form>
+   <form id="geocodify-sizing"></form>
    <script type="text/javascript">
-        $("#geocodify-font-size").geocodify({
+        $("#geocodify-sizing").geocodify({
             onSelect: function (result) { alert(result); },
             fontSize: "12px",
             height: 20,
             width: 250
+        });
+   </script>
+
+.. raw:: html
+
+    <hr>
+
+Initial text
+------------
+
+You can provide a string to load when the box first appears.
+
+.. raw:: html
+
+   <form id="geocodify-initial-text"></form>
+   <script type="text/javascript">
+        $("#geocodify-initial-text").geocodify({
+            onSelect: function (result) { alert(result); },
+            initialText: "Enter an address"
+        });
+   </script>
+
+.. code-block:: html
+
+   <form id="geocodify-initial-text"></form>
+   <script type="text/javascript">
+        $("#geocodify-initial-text").geocodify({
+            onSelect: function (result) { alert(result); },
+            initialText: "Enter an address"
         });
    </script>
 

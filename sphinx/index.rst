@@ -115,6 +115,7 @@ Demonstrations
       <li><a href="demonstrations.html#button-values">Button values</a></li>
       <li><a href="demonstrations.html#filter-results">Filter results</a></li>
       <li><a href="demonstrations.html#sizing">Sizing</a></li>
+      <li><a href="demonstrations.html#initial-text">Initial text</a></li>
    </ul>
    <hr>
 
@@ -209,6 +210,12 @@ Configuration
                 <td>Sets the height of input box and submit button. Expects an integer.</td>
                 <td>16</td>
                 <td><a href="demonstrations.html#sizing">Link</a></td>
+            </tr>
+            <tr>
+                <td><em>initialText</em></td>
+                <td>Sets a default string to appear when the box loads.</td>
+                <td>null</td>
+                <td><a href="demonstrations.html#initial-text">Link</a></td>
             </tr>
             <tr>
                 <td><em>width</em></td>
