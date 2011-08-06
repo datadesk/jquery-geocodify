@@ -17,18 +17,56 @@ The basic box
 
 .. raw:: html
 
-   <form id="geocoder"></form>
+   <form id="basic-box"></form>
    <script type="text/javascript">
-        $("#geocoder").geocodify({
+        $("#basic-box").geocodify({
             onSelect: function (result) { alert(result); }
         });
    </script>
 
 .. code-block:: html
 
-   <form id="geocoder"></form>
+   <form id="basic-box"></form>
    <script type="text/javascript">
-        $("#geocoder").geocodify({
+        $("#basic-box").geocodify({
             onSelect: function (result) { alert(result); }
         });
    </script>
+
+.. raw:: html
+
+    <hr>
+
+.. _address-type-whitelisting:
+Address type whitelisting
+-------------------------
+
+The whitelist of acceptable address types is reduced to to only return airports. Try searching for "Charles De Gaulle."
+
+.. raw:: html
+
+   <form id="address-type-whitelisting"></form>
+   <script type="text/javascript">
+        $("#address-type-whitelisting").geocodify({
+            onSelect: function (result) { alert(result); },
+            acceptableAddressTypes: [
+                'airport',
+            ]
+        });
+   </script>
+
+.. code-block:: html
+
+   <form id="address-type-whitelisting"></form>
+   <script type="text/javascript">
+        $("#address-type-whitelisting").geocodify({
+            onSelect: function (result) { alert(result); },
+            acceptableAddressTypes: [
+                'airport',
+            ]
+        });
+   </script>
+
+.. raw:: html
+
+    <hr>

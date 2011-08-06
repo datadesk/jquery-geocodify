@@ -49,20 +49,43 @@
  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
  <script type="text/javascript" src="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js"></script><div class="section" id="the-basic-box">
 <h2>The basic box<a class="headerlink" href="#the-basic-box" title="Permalink to this headline">¶</a></h2>
-<form id="geocoder"></form>
+<form id="basic-box"></form>
 <script type="text/javascript">
-     $("#geocoder").geocodify({
+     $("#basic-box").geocodify({
          onSelect: function (result) { alert(result); }
      });
-</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocoder&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
+</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;basic-box&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocoder&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
+     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#basic-box&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
          <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">}</span>
      <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 </div>
+<hr></div>
+<div class="section" id="id1">
+<h2>Address type whitelisting<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>The whitelist of acceptable address types is reduced to to only return airports. Try searching for &#8220;Charles De Gaulle.&#8221;</p>
+<form id="address-type-whitelisting"></form>
+<script type="text/javascript">
+     $("#address-type-whitelisting").geocodify({
+         onSelect: function (result) { alert(result); },
+         acceptableAddressTypes: [
+             'airport',
+         ]
+     });
+</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;address-type-whitelisting&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#address-type-whitelisting&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
+         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
+         <span class="nx">acceptableAddressTypes</span><span class="o">:</span> <span class="p">[</span>
+             <span class="s1">&#39;airport&#39;</span><span class="p">,</span>
+         <span class="p">]</span>
+     <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
 </div>
+<hr></div>
 </div>
 
 
@@ -75,6 +98,7 @@
   <ul>
 <li><a class="reference internal" href="#">Demonstrations</a><ul>
 <li><a class="reference internal" href="#the-basic-box">The basic box</a></li>
+<li><a class="reference internal" href="#id1">Address type whitelisting</a></li>
 </ul>
 </li>
 </ul>
