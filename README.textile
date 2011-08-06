@@ -11,34 +11,6 @@ Y88b  d88P 888       Y88b. .d88P Y88b  d88P Y88b. .d88P 888  .d88P  888   888   
 
 Autocomplete for address searches
 
-h2. Demonstration
+Documentation, examples and downloads at "http://datadesk.github.com/jquery-geocodify/":http://datadesk.github.com/jquery-geocodify/
 
-"http://datadesk.github.com/jquery-geocodify/":http://datadesk.github.com/jquery-geocodify/
 
-h2. Getting Started
-
-*01. Add an empty form to your page's body*
-
-<pre><code><form id="geocoder"></form></code></pre>
-
-*02. Import all the dependencies in your page's head*
-
-<pre><code><script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> 
-<script type="text/javascript" src="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js"></script></code></pre>
-
-*03. Initialize the form in your head, and tell it what function to run when the user selects an address*
-
-<pre><code> $(document).ready(function() {
-    $("#geocoder").geocodify({
-        onSelect: function (ele) { console.log(ele); }
-    });
-});</code></pre>
-
-The example above will just log the selected address to the browser's console. It's a JavaScript representation of what is returned by "the Google Maps geocoder.":http://code.google.com/apis/maps/documentation/geocoding/#GeocodingResponses
-
-You can do a lot more than that. Your onSelect function could jump the user to another page, or update a map on that same page, like "this demo.":http://datadesk.github.com/jquery-geocodify/
-
-h2. Credits
-
-This library was inspired by the work of the "Chicago Tribune News Applications Team":https://github.com/newsapps.
