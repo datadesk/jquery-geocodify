@@ -110,9 +110,10 @@ Demonstrations
 .. raw:: html
    
    <ul>
-      <li><a href="demonstrations.html#basic-box">Basic box</a>
-      <li><a href="demonstrations.html#address-type-whitelisting">Address type whitelist</a>
-      <li><a href="demonstrations.html#button-values">Button values</a>
+      <li><a href="demonstrations.html#basic-box">Basic box</a></li>
+      <li><a href="demonstrations.html#address-type-whitelisting">Address type whitelist</a></li>
+      <li><a href="demonstrations.html#button-values">Button values</a></li>
+      <li><a href="demonstrations.html#filter-results">Filter results</a></li>
    </ul>
    <hr>
 
@@ -156,7 +157,20 @@ Configuration
                 </td>
                 <td>
                     <a href="demonstrations.html#button-values">Link</a> 
-                </td>                
+                </td>
+            </tr>
+            <tr>
+                <td><em>errorHandler</em></td>
+                <td>A function for handling errors returned by the Google geocoder.</td>
+                <td>null</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><em>filterResults</em></td>
+                <td>A function for filtering results before they appear in the dropdown.</td>
+                <td>null</td>
+                <td><a href="demonstrations.html#filter-results">Link</a></td>
+            </tr>
         </tbody>
     </table>
 

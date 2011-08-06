@@ -76,7 +76,7 @@ You can customize the text that appears in the submit button to be whatever you'
    <script type="text/javascript">
         $("#geocodify-button-values-text").geocodify({
             onSelect: function (result) { alert(result); },
-            buttonValue: "Submit a search please"
+            buttonValue: "Submit a search, please"
         });
    </script>
 
@@ -117,4 +117,59 @@ You can also remove the button entirely.
 
     <hr>
 
+Filter results
+--------------
 
+Geocoder results can be filtered before they appear in the dropdown by passing in a function. It should accept a list of Google geocoder objects and return whatever list you'd like to keep. This example drops any results that aren't filed in Los Angeles County.
+
+.. raw:: html
+
+   <form id="geocodify-filter-results"></form>
+   <script type="text/javascript">
+        $("#geocodify-filter-results").geocodify({
+            onSelect: function (result) { alert(result); },
+            filterResults: function(results) {
+                var filteredResults =[];
+                $.each(results, function(i,val) {
+                    for (var ac in val.address_components) {
+                        for (var t in val.address_components[ac].types) {
+                            if (val.address_components[ac].types[t] === 'administrative_area_level_2') {
+                                if (val.address_components[ac].long_name === 'Los Angeles') {
+                                    filteredResults.push(val);
+                                }
+                            }
+                        }
+                    }
+                });
+                return filteredResults;
+            }
+        });
+   </script>
+
+.. code-block:: html
+
+   <form id="geocodify-filter-results"></form>
+   <script type="text/javascript">
+        $("#geocodify-filter-results").geocodify({
+            onSelect: function (result) { alert(result); },
+            filterResults: function(results) {
+                var filteredResults =[];
+                $.each(results, function(i,val) {
+                    for (var ac in val.address_components) {
+                        for (var t in val.address_components[ac].types) {
+                            if (val.address_components[ac].types[t] === 'administrative_area_level_2') {
+                                if (val.address_components[ac].long_name === 'Los Angeles') {
+                                    filteredResults.push(val);
+                                }
+                            }
+                        }
+                    }
+                });
+                return filteredResults;
+            }
+        });
+   </script>
+
+.. raw:: html
+
+    <hr>

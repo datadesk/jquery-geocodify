@@ -93,7 +93,7 @@
 <script type="text/javascript">
      $("#geocodify-button-values-text").geocodify({
          onSelect: function (result) { alert(result); },
-         buttonValue: "Submit a search please"
+         buttonValue: "Submit a search, please"
      });
 </script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-button-values-text&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
@@ -121,6 +121,53 @@
 </pre></div>
 </div>
 <hr></div>
+<div class="section" id="filter-results">
+<h2>Filter results<a class="headerlink" href="#filter-results" title="Permalink to this headline">¶</a></h2>
+<p>Geocoder results can be filtered before they appear in the dropdown by passing in a function. It should accept a list of Google geocoder objects and return whatever list you&#8217;d like to keep. This example drops any results that aren&#8217;t filed in Los Angeles County.</p>
+<form id="geocodify-filter-results"></form>
+<script type="text/javascript">
+     $("#geocodify-filter-results").geocodify({
+         onSelect: function (result) { alert(result); },
+         filterResults: function(results) {
+             var filteredResults =[];
+             $.each(results, function(i,val) {
+                 for (var ac in val.address_components) {
+                     for (var t in val.address_components[ac].types) {
+                         if (val.address_components[ac].types[t] === 'administrative_area_level_2') {
+                             if (val.address_components[ac].long_name === 'Los Angeles') {
+                                 filteredResults.push(val);
+                             }
+                         }
+                     }
+                 }
+             });
+             return filteredResults;
+         }
+     });
+</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-filter-results&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-filter-results&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
+         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
+         <span class="nx">filterResults</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
+             <span class="kd">var</span> <span class="nx">filteredResults</span> <span class="o">=</span><span class="p">[];</span>
+             <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">results</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">ac</span> <span class="k">in</span> <span class="nx">val</span><span class="p">.</span><span class="nx">address_components</span><span class="p">)</span> <span class="p">{</span>
+                     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">t</span> <span class="k">in</span> <span class="nx">val</span><span class="p">.</span><span class="nx">address_components</span><span class="p">[</span><span class="nx">ac</span><span class="p">].</span><span class="nx">types</span><span class="p">)</span> <span class="p">{</span>
+                         <span class="k">if</span> <span class="p">(</span><span class="nx">val</span><span class="p">.</span><span class="nx">address_components</span><span class="p">[</span><span class="nx">ac</span><span class="p">].</span><span class="nx">types</span><span class="p">[</span><span class="nx">t</span><span class="p">]</span> <span class="o">===</span> <span class="s1">&#39;administrative_area_level_2&#39;</span><span class="p">)</span> <span class="p">{</span>
+                             <span class="k">if</span> <span class="p">(</span><span class="nx">val</span><span class="p">.</span><span class="nx">address_components</span><span class="p">[</span><span class="nx">ac</span><span class="p">].</span><span class="nx">long_name</span> <span class="o">===</span> <span class="s1">&#39;Los Angeles&#39;</span><span class="p">)</span> <span class="p">{</span>
+                                 <span class="nx">filteredResults</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+                             <span class="p">}</span>
+                         <span class="p">}</span>
+                     <span class="p">}</span>
+                 <span class="p">}</span>
+             <span class="p">});</span>
+             <span class="k">return</span> <span class="nx">filteredResults</span><span class="p">;</span>
+         <span class="p">}</span>
+     <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</div>
+<hr></div>
 </div>
 
 
@@ -135,6 +182,7 @@
 <li><a class="reference internal" href="#the-basic-box">The basic box</a></li>
 <li><a class="reference internal" href="#address-type-whitelisting">Address type whitelisting</a></li>
 <li><a class="reference internal" href="#button-values">Button values</a></li>
+<li><a class="reference internal" href="#filter-results">Filter results</a></li>
 </ul>
 </li>
 </ul>
