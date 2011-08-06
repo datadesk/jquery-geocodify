@@ -173,3 +173,36 @@ Geocoder results can be filtered before they appear in the dropdown by passing i
 .. raw:: html
 
     <hr>
+
+Sizing
+------
+
+You can customize the size of the text input and submit button with a combination of config options.
+
+.. raw:: html
+
+   <form id="geocodify-font-size"></form>
+   <script type="text/javascript">
+        $("#geocodify-font-size").geocodify({
+            onSelect: function (result) { alert(result); },
+            fontSize: "12px",
+            height: 20,
+            width: 250
+        });
+   </script>
+
+.. code-block:: html
+
+   <form id="geocodify-font-size"></form>
+   <script type="text/javascript">
+        $("#geocodify-font-size").geocodify({
+            onSelect: function (result) { alert(result); },
+            fontSize: "12px",
+            height: 20,
+            width: 250
+        });
+   </script>
+
+.. raw:: html
+
+    <hr>

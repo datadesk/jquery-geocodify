@@ -114,6 +114,7 @@ Demonstrations
       <li><a href="demonstrations.html#address-type-whitelisting">Address type whitelist</a></li>
       <li><a href="demonstrations.html#button-values">Button values</a></li>
       <li><a href="demonstrations.html#filter-results">Filter results</a></li>
+      <li><a href="demonstrations.html#sizing">Sizing</a></li>
    </ul>
    <hr>
 
@@ -196,6 +197,24 @@ Configuration
                 <td>A function for filtering results before they appear in the dropdown.</td>
                 <td>null</td>
                 <td><a href="demonstrations.html#filter-results">Link</a></td>
+            </tr>
+            <tr>
+                <td><em>fontSize</em></td>
+                <td>Sets the size of the font for the text input and submit button.</td>
+                <td>16px</td>
+                <td><a href="demonstrations.html#sizing">Link</a></td>
+            </tr>
+            <tr>
+                <td><em>height</em></td>
+                <td>Sets the height of input box and submit button. Expects an integer.</td>
+                <td>16</td>
+                <td><a href="demonstrations.html#sizing">Link</a></td>
+            </tr>
+            <tr>
+                <td><em>width</em></td>
+                <td>Sets the width of input box and submit button. Expects an integer.</td>
+                <td>16</td>
+                <td><a href="demonstrations.html#sizing">Link</a></td>
             </tr>
         </tbody>
     </table>

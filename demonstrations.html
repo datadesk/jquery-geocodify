@@ -168,6 +168,29 @@
 </pre></div>
 </div>
 <hr></div>
+<div class="section" id="sizing">
+<h2>Sizing<a class="headerlink" href="#sizing" title="Permalink to this headline">¶</a></h2>
+<p>You can customize the size of the text input and submit button with a combination of config options.</p>
+<form id="geocodify-font-size"></form>
+<script type="text/javascript">
+     $("#geocodify-font-size").geocodify({
+         onSelect: function (result) { alert(result); },
+         fontSize: "12px",
+         height: 20,
+         width: 250
+     });
+</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-font-size&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-font-size&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
+         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
+         <span class="nx">fontSize</span><span class="o">:</span> <span class="s2">&quot;12px&quot;</span><span class="p">,</span>
+         <span class="nx">height</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+         <span class="nx">width</span><span class="o">:</span> <span class="mi">250</span>
+     <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</div>
+<hr></div>
 </div>
 
 
@@ -183,6 +206,7 @@
 <li><a class="reference internal" href="#address-type-whitelisting">Address type whitelisting</a></li>
 <li><a class="reference internal" href="#button-values">Button values</a></li>
 <li><a class="reference internal" href="#filter-results">Filter results</a></li>
+<li><a class="reference internal" href="#sizing">Sizing</a></li>
 </ul>
 </li>
 </ul>
