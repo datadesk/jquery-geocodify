@@ -52,12 +52,12 @@
 <form id="geocoder"></form>
 <script type="text/javascript">
      $("#geocoder").geocodify({
-         onSelect: function (ele) { alert(ele); }
+         onSelect: function (result) { alert(result); }
      });
 </script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocoder&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
      <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocoder&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
-         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ele</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span> <span class="p">}</span>
+         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">}</span>
      <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>

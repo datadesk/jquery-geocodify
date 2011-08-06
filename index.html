@@ -65,7 +65,7 @@
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocoder&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocoder&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
-        <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ele</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span> <span class="p">}</span>
+        <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">}</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
@@ -76,12 +76,35 @@
 <h1>Demonstrations<a class="headerlink" href="#demonstrations" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference internal" href="demonstrations.html#basic-box"><em>Basic box</em></a></li>
+<li><em class="xref std std-ref">Address type whitelist</em></li>
 </ul>
 <hr></div>
 <div class="section" id="configuration">
 <h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
-<p>TK ...</p>
-<hr></div>
+<p><strong>Optional arguments</strong></p>
+<table>
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Use</th>
+            <th>Default</th>
+            <th>Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><em>acceptableAddressTypes</em></td>
+            <td>
+                A whitelist of address types allowed to appear in the results.
+                Drawn from <a href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingAddressTypes">the set defined by Google's geocoder</a>.
+            </td>
+            <td>All types accepted</td>
+            <td>
+                <a href="demonstrations.html#address-type-whitelisting">Link</a>
+            </td>
+        </tr>
+    </tbody>
+</table><hr></div>
 <div class="section" id="downloads">
 <h1>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h1>
 <p>TK ...</p>

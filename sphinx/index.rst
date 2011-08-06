@@ -39,7 +39,7 @@ Add an empty form to your page's body and initialize it with instructions for wh
     <form id="geocoder"></form>
     <script type="text/javascript">
         $("#geocoder").geocodify({
-            onSelect: function (ele) { alert(ele); } 
+            onSelect: function (result) { alert(result); } 
         });
     </script>
 
@@ -53,6 +53,7 @@ Demonstrations
 ==============
 
 * :ref:`Basic box <basic-box>`
+* :ref:`Address type whitelist <address-type-whitelisting>`
 
 .. raw:: html
 
@@ -61,10 +62,37 @@ Demonstrations
 Configuration
 =============
 
-TK ...
+
+**Optional arguments**
 
 .. raw:: html
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Use</th>
+                <th>Default</th>
+                <th>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><em>acceptableAddressTypes</em></td>
+                <td>
+                    A whitelist of address types allowed to appear in the results.
+                    Drawn from <a href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingAddressTypes">the set defined by Google's geocoder</a>.
+                </td>
+                <td>All types accepted</td>
+                <td>
+                    <a href="demonstrations.html#address-type-whitelisting">Link</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
+.. raw:: html
+  
    <hr>
 
 Downloads

@@ -20,7 +20,7 @@ The basic box
    <form id="geocoder"></form>
    <script type="text/javascript">
         $("#geocoder").geocodify({
-            onSelect: function (ele) { alert(ele); }
+            onSelect: function (result) { alert(result); }
         });
    </script>
 
@@ -29,6 +29,6 @@ The basic box
    <form id="geocoder"></form>
    <script type="text/javascript">
         $("#geocoder").geocodify({
-            onSelect: function (ele) { alert(ele); }
+            onSelect: function (result) { alert(result); }
         });
    </script>
