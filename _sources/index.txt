@@ -120,6 +120,32 @@ Demonstrations
 Configuration
 =============
 
+**Required arguments**
+
+.. raw:: html
+
+    <table>
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Use</th>
+                <th>Default</th>
+                <th>Demo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><em>onSelect</em></td>
+                <td>
+                    A function that takes the Google geocoder's result object and decides what to do with it, like it load it on a map, or redirect to another page, or whatever you need.
+                </td>
+                <td>An ugly alert with the result's address.</td>
+                <td>
+                    <a href="demonstrations.html#basic-box">Link</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
 **Optional arguments**
 
