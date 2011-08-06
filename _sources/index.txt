@@ -226,6 +226,12 @@ Configuration
                 <td><a href="demonstrations.html#region-bias">Link</a></td>
             </tr>
             <tr>
+                <td><em>viewportBias</em></td>
+                <td>Instruct the geocoder to return results biased towards a bounding box presented in Google's data format. Google's documentation can be found <a href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingViewports">here</a>.</td>
+                <td>null</td>
+                <td><a href="demonstrations.html#viewport-bias">Link</a></td>
+            </tr>
+            <tr>
                 <td><em>width</em></td>
                 <td>Sets the width of input box and submit button. Expects an integer.</td>
                 <td>16</td>

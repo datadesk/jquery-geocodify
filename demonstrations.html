@@ -302,6 +302,31 @@
 </pre></div>
 </div>
 <hr></div>
+<div class="section" id="viewport-bias">
+<h2>Viewport bias<a class="headerlink" href="#viewport-bias" title="Permalink to this headline">¶</a></h2>
+<p>Instruct the geocoder to return results biased towards a bounding box presented in Google&#8217;s data format. Google&#8217;s documentation can be found <a class="reference external" href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingViewports">here</a>. This example biases results to a box surrounding Los Angeles County.</p>
+<form id="geocodify-viewport-bias"></form>
+<script type="text/javascript">
+     $("#geocodify-viewport-bias").geocodify({
+         onSelect: function (result) { alert(result); },
+         viewportBias: new google.maps.LatLngBounds(
+             new google.maps.LatLng(33.22030778968541,-118.948974609375),
+             new google.maps.LatLng(35.0120020431607,-117.44384765625)
+         )
+     });
+</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-viewport-bias&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-viewport-bias&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
+         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
+         <span class="nx">viewportBias</span><span class="o">:</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLngBounds</span><span class="p">(</span>
+             <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLng</span><span class="p">(</span><span class="mf">33.22030778968541</span><span class="p">,</span><span class="o">-</span><span class="mf">118.948974609375</span><span class="p">),</span>
+             <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLng</span><span class="p">(</span><span class="mf">35.0120020431607</span><span class="p">,</span><span class="o">-</span><span class="mf">117.44384765625</span><span class="p">)</span>
+         <span class="p">)</span>
+     <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -323,6 +348,7 @@
 <li><a class="reference internal" href="#prep-search-string">Prep search string</a></li>
 <li><a class="reference internal" href="#sizing">Sizing</a></li>
 <li><a class="reference internal" href="#region-bias">Region bias</a></li>
+<li><a class="reference internal" href="#viewport-bias">Viewport bias</a></li>
 </ul>
 </li>
 </ul>

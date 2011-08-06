@@ -367,3 +367,34 @@ Instruct the geocoder to return results biased towards a particular region of th
 .. raw:: html
 
     <hr>
+
+Viewport bias
+-------------
+
+Instruct the geocoder to return results biased towards a bounding box presented in Google's data format. Google's documentation can be found `here <http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingViewports>`_. This example biases results to a box surrounding Los Angeles County.
+
+.. raw:: html
+
+   <form id="geocodify-viewport-bias"></form>
+   <script type="text/javascript">
+        $("#geocodify-viewport-bias").geocodify({
+            onSelect: function (result) { alert(result); },
+            viewportBias: new google.maps.LatLngBounds(
+                new google.maps.LatLng(33.22030778968541,-118.948974609375),
+                new google.maps.LatLng(35.0120020431607,-117.44384765625)
+            )
+        });
+   </script>
+
+.. code-block:: html
+
+   <form id="geocodify-viewport-bias"></form>
+   <script type="text/javascript">
+        $("#geocodify-viewport-bias").geocodify({
+            onSelect: function (result) { alert(result); },
+            viewportBias: new google.maps.LatLngBounds(
+                new google.maps.LatLng(33.22030778968541,-118.948974609375),
+                new google.maps.LatLng(35.0120020431607,-117.44384765625)
+            )
+        });
+   </script>
