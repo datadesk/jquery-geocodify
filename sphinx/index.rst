@@ -247,25 +247,29 @@ Configuration
 Downloads
 =========
 
-TK ...
-
 .. raw:: html
 
-   <hr>
-
-Changelog
-=========
-
-TK ...
-
-.. raw:: html
-
-   <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>Version</th>
+                <th>URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Trunk, still in beta and could change significantly.</td>
+                <td><a href="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js">https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js</a></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <hr>
 
 Credits
 =======
 
-TK ...
+This library was created by Ben Welsh of the `Los Angeles Times Data Desk <http://datadesk.github.com/>`_. Valuable contributions have been made by `albertsun <https://github.com/albertsun>`_ and `unruthless <https://github.com/unruthless>`_. Inspiration was provided by the `Chicago Tribune News Applications team <https://github.com/newsapps>`_ team.
 
 .. raw:: html
 
