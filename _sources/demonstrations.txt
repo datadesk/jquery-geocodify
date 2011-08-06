@@ -174,39 +174,6 @@ Geocoder results can be filtered before they appear in the dropdown by passing i
 
     <hr>
 
-Sizing
-------
-
-You can customize the size of the text input and submit button with a combination of config options.
-
-.. raw:: html
-
-   <form id="geocodify-sizing"></form>
-   <script type="text/javascript">
-        $("#geocodify-sizing").geocodify({
-            onSelect: function (result) { alert(result); },
-            fontSize: "12px",
-            height: 20,
-            width: 250
-        });
-   </script>
-
-.. code-block:: html
-
-   <form id="geocodify-sizing"></form>
-   <script type="text/javascript">
-        $("#geocodify-sizing").geocodify({
-            onSelect: function (result) { alert(result); },
-            fontSize: "12px",
-            height: 20,
-            width: 250
-        });
-   </script>
-
-.. raw:: html
-
-    <hr>
-
 Initial text
 ------------
 
@@ -332,6 +299,68 @@ A function that treats the search string before it is passed to the geocoder. Th
                     return query;
                 }
             }
+        });
+   </script>
+
+.. raw:: html
+
+    <hr>
+
+Sizing
+------
+
+You can customize the size of the text input and submit button with a combination of config options.
+
+.. raw:: html
+
+   <form id="geocodify-sizing"></form>
+   <script type="text/javascript">
+        $("#geocodify-sizing").geocodify({
+            onSelect: function (result) { alert(result); },
+            fontSize: "12px",
+            height: 20,
+            width: 250
+        });
+   </script>
+
+.. code-block:: html
+
+   <form id="geocodify-sizing"></form>
+   <script type="text/javascript">
+        $("#geocodify-sizing").geocodify({
+            onSelect: function (result) { alert(result); },
+            fontSize: "12px",
+            height: 20,
+            width: 250
+        });
+   </script>
+
+.. raw:: html
+
+    <hr>
+
+Region bias
+-----------
+
+Instruct the geocoder to return results biased towards a particular region of the world. More information about the available codes can be found `here <http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingRegionCodes>`_. This example biases results to Spain.
+
+.. raw:: html
+
+   <form id="geocodify-region-bias"></form>
+   <script type="text/javascript">
+        $("#geocodify-region-bias").geocodify({
+            onSelect: function (result) { alert(result); },
+            regionBias: "ES"
+        });
+   </script>
+
+.. code-block:: html
+
+   <form id="geocodify-region-bias"></form>
+   <script type="text/javascript">
+        $("#geocodify-region-bias").geocodify({
+            onSelect: function (result) { alert(result); },
+            regionBias: "ES"
         });
    </script>
 
