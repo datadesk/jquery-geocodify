@@ -11,6 +11,7 @@ Examples of jquery-geocodify in action. :doc:`Full documentation is elsewhere </
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js"></script>
 
+.. _basic-box:
 The basic box
 -------------
 
@@ -19,7 +20,7 @@ The basic box
    <form id="geocoder"></form>
    <script type="text/javascript">
         $("#geocoder").geocodify({
-            onSelect: function (ele) { console.log(ele); }
+            onSelect: function (ele) { alert(ele); }
         });
    </script>
 
@@ -28,6 +29,6 @@ The basic box
    <form id="geocoder"></form>
    <script type="text/javascript">
         $("#geocoder").geocodify({
-            onSelect: function (ele) { console.log(ele); }
+            onSelect: function (ele) { alert(ele); }
         });
    </script>

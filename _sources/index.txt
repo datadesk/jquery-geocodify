@@ -39,11 +39,11 @@ Add an empty form to your page's body and initialize it with instructions for wh
     <form id="geocoder"></form>
     <script type="text/javascript">
         $("#geocoder").geocodify({
-            onSelect: function (ele) { console.log(ele); } 
+            onSelect: function (ele) { alert(ele); } 
         });
     </script>
 
-The example above will just log the selected address to the browser's console. It's a JavaScript representation of what is returned by `the Google Maps geocoder. <http://code.google.com/apis/maps/documentation/geocoding/#GeocodingResponses>`_
+The example above will just alert the selected address in the browser. It's a JavaScript representation of what is returned by `the Google Maps geocoder. <http://code.google.com/apis/maps/documentation/geocoding/#GeocodingResponses>`_
 
 .. raw:: html
 
@@ -52,10 +52,7 @@ The example above will just log the selected address to the browser's console. I
 Demonstrations
 ==============
 
-.. toctree::
-   :maxdepth: 3
-
-   demonstrations
+* :ref:`Basic box <basic-box>`
 
 .. raw:: html
 

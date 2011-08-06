@@ -52,10 +52,7 @@ The example above will just alert the selected address in the browser. It's a Ja
 Demonstrations
 ==============
 
-.. toctree::
-   :maxdepth: 3
-
-   demonstrations
+* :ref:`Basic box <basic-box>`
 
 .. raw:: html
 

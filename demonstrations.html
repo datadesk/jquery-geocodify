@@ -23,8 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="jquery-geocodify v0.1 documentation" href="index.html" />
-    <link rel="prev" title="Features" href="index.html" /> 
+    <link rel="top" title="jquery-geocodify v0.1 documentation" href="index.html" /> 
   </head>
   <body>              
 <a href="http://www.github.com/datadesk/jquery-geocodify/">
@@ -53,12 +52,12 @@
 <form id="geocoder"></form>
 <script type="text/javascript">
      $("#geocoder").geocodify({
-         onSelect: function (ele) { console.log(ele); }
+         onSelect: function (ele) { alert(ele); }
      });
 </script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocoder&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
      <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocoder&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
-         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ele</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span> <span class="p">}</span>
+         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ele</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span> <span class="p">}</span>
      <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
@@ -80,9 +79,6 @@
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Features</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/demonstrations.txt"

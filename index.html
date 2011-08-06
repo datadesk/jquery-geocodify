@@ -23,8 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="jquery-geocodify v0.1 documentation" href="#" />
-    <link rel="next" title="Demonstrations" href="demonstrations.html" /> 
+    <link rel="top" title="jquery-geocodify v0.1 documentation" href="#" /> 
   </head>
   <body>              
 <a href="http://www.github.com/datadesk/jquery-geocodify/">
@@ -66,23 +65,18 @@
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocoder&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocoder&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
-        <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ele</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span> <span class="p">}</span>
+        <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ele</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span> <span class="p">}</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 </div>
-<p>The example above will just log the selected address to the browser&#8217;s console. It&#8217;s a JavaScript representation of what is returned by <a class="reference external" href="http://code.google.com/apis/maps/documentation/geocoding/#GeocodingResponses">the Google Maps geocoder.</a></p>
+<p>The example above will just alert the selected address in the browser. It&#8217;s a JavaScript representation of what is returned by <a class="reference external" href="http://code.google.com/apis/maps/documentation/geocoding/#GeocodingResponses">the Google Maps geocoder.</a></p>
 <hr></div>
 <div class="section" id="demonstrations">
 <h1>Demonstrations<a class="headerlink" href="#demonstrations" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="demonstrations.html">Demonstrations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="demonstrations.html#the-basic-box">The basic box</a></li>
+<ul class="simple">
+<li><a class="reference internal" href="demonstrations.html#basic-box"><em>Basic box</em></a></li>
 </ul>
-</li>
-</ul>
-</div>
 <hr></div>
 <div class="section" id="configuration">
 <h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
@@ -119,9 +113,7 @@
   <ul>
 <li><a class="reference internal" href="#">Features</a></li>
 <li><a class="reference internal" href="#getting-started">Getting Started</a></li>
-<li><a class="reference internal" href="#demonstrations">Demonstrations</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#demonstrations">Demonstrations</a></li>
 <li><a class="reference internal" href="#configuration">Configuration</a></li>
 <li><a class="reference internal" href="#downloads">Downloads</a></li>
 <li><a class="reference internal" href="#changelog">Changelog</a></li>
@@ -129,9 +121,6 @@
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
-  <h4>Next topic</h4>
-  <p class="topless"><a href="demonstrations.html"
-                        title="next chapter">Demonstrations</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"
