@@ -276,5 +276,3 @@ This library was created by Ben Welsh of the `Los Angeles Times Data Desk <http:
    <hr>
 
 
-
-
