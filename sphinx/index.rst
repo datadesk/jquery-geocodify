@@ -104,21 +104,6 @@ The example above will just alert the selected address in the browser. It's a Ja
 
    <hr>
 
-Demonstrations
-==============
-
-.. raw:: html
-   
-   <ul>
-      <li><a href="demonstrations.html#basic-box">Basic box</a></li>
-      <li><a href="demonstrations.html#address-type-whitelisting">Address type whitelist</a></li>
-      <li><a href="demonstrations.html#button-values">Button values</a></li>
-      <li><a href="demonstrations.html#filter-results">Filter results</a></li>
-      <li><a href="demonstrations.html#sizing">Sizing</a></li>
-      <li><a href="demonstrations.html#initial-text">Initial text</a></li>
-   </ul>
-   <hr>
-
 Configuration
 =============
 
@@ -216,6 +201,12 @@ Configuration
                 <td>Sets a default string to appear when the box loads.</td>
                 <td>null</td>
                 <td><a href="demonstrations.html#initial-text">Link</a></td>
+            </tr>
+            <tr>
+                <td><em>noResultsText</em></td>
+                <td>The text that appears when a search returns no results.</td>
+                <td>"No results found. Please refine your search."</td>
+                <td><a href="demonstrations.html#no-results-text">Link</a></td>
             </tr>
             <tr>
                 <td><em>width</em></td>

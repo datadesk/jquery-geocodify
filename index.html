@@ -8,13 +8,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Features &mdash; jquery-geocodify v0.1 documentation</title>
+    <title>Features &mdash; jquery-geocodify v0.1 beta documentation</title>
     <link rel="stylesheet" href="_static/latimes.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1',
+        VERSION:     '0.1 beta',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="jquery-geocodify v0.1 documentation" href="#" /> 
+    <link rel="top" title="jquery-geocodify v0.1 beta documentation" href="#" /> 
   </head>
   <body>              
 <a href="http://www.github.com/datadesk/jquery-geocodify/">
@@ -31,7 +31,7 @@
 </a>
 <div class="banner">
     <h1><a href="#"><img src="_static/banner.png"></a></h1>
-    <h2>Version 0.1 :: <a href="http://github.com/datadesk">http://github.com/datadesk</a></h2>
+    <h2>Version 0.1 beta :: <a href="http://github.com/datadesk">http://github.com/datadesk</a></h2>
 </div>
 <div class="banner-underline"></div> 
   
@@ -118,17 +118,6 @@
 </pre></div>
 </div>
 <p>The example above will just alert the selected address in the browser. It&#8217;s a JavaScript representation of what is returned by <a class="reference external" href="http://code.google.com/apis/maps/documentation/geocoding/#GeocodingResponses">the Google Maps geocoder.</a></p>
-<hr></div>
-<div class="section" id="demonstrations">
-<h1>Demonstrations<a class="headerlink" href="#demonstrations" title="Permalink to this headline">¶</a></h1>
-<ul>
-   <li><a href="demonstrations.html#basic-box">Basic box</a></li>
-   <li><a href="demonstrations.html#address-type-whitelisting">Address type whitelist</a></li>
-   <li><a href="demonstrations.html#button-values">Button values</a></li>
-   <li><a href="demonstrations.html#filter-results">Filter results</a></li>
-   <li><a href="demonstrations.html#sizing">Sizing</a></li>
-   <li><a href="demonstrations.html#initial-text">Initial text</a></li>
-</ul>
 <hr></div>
 <div class="section" id="configuration">
 <h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
@@ -220,6 +209,12 @@
             <td><a href="demonstrations.html#initial-text">Link</a></td>
         </tr>
         <tr>
+            <td><em>noResultsText</em></td>
+            <td>The text that appears when a search returns no results.</td>
+            <td>"No results found. Please refine your search."</td>
+            <td><a href="demonstrations.html#no-results-text">Link</a></td>
+        </tr>
+        <tr>
             <td><em>width</em></td>
             <td>Sets the width of input box and submit button. Expects an integer.</td>
             <td>16</td>
@@ -251,7 +246,6 @@
 <li><a class="reference internal" href="#">Features</a></li>
 <li><a class="reference internal" href="#example">Example</a></li>
 <li><a class="reference internal" href="#getting-started">Getting Started</a></li>
-<li><a class="reference internal" href="#demonstrations">Demonstrations</a></li>
 <li><a class="reference internal" href="#configuration">Configuration</a></li>
 <li><a class="reference internal" href="#downloads">Downloads</a></li>
 <li><a class="reference internal" href="#changelog">Changelog</a></li>

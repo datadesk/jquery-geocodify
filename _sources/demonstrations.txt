@@ -235,3 +235,32 @@ You can provide a string to load when the box first appears.
 .. raw:: html
 
     <hr>
+
+No results text
+---------------
+
+You can provide a string for the dropdown when no results return. Try searching some nonsense like "qwerty."
+
+.. raw:: html
+
+   <form id="geocodify-no-results-text"></form>
+   <script type="text/javascript">
+        $("#geocodify-no-results-text").geocodify({
+            onSelect: function (result) { alert(result); },
+            noResultsText: "Nein!"
+        });
+   </script>
+
+.. code-block:: html
+
+   <form id="geocodify-no-results-text"></form>
+   <script type="text/javascript">
+        $("#geocodify-no-results-text").geocodify({
+            onSelect: function (result) { alert(result); },
+            noResultsText: "Nein!"
+        });
+   </script>
+
+.. raw:: html
+
+    <hr>
