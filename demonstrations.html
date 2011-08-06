@@ -229,6 +229,25 @@
 </pre></div>
 </div>
 <hr></div>
+<div class="section" id="minimum-characters">
+<h2>Minimum characters<a class="headerlink" href="#minimum-characters" title="Permalink to this headline">¶</a></h2>
+<p>Sets the number of characters that must be entered before the geocoder starts to automatically run. This example reduces the number to 2. Try searching &#8220;LAX.&#8221;</p>
+<form id="geocodify-minimum-characters"></form>
+<script type="text/javascript">
+     $("#geocodify-minimum-characters").geocodify({
+         onSelect: function (result) { alert(result); },
+         minimumCharacters: 2
+     });
+</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-minimum-characters&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-minimum-characters&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
+         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
+         <span class="nx">minimumCharacters</span><span class="o">:</span> <span class="mi">2</span>
+     <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</div>
+<hr></div>
 </div>
 
 
@@ -247,6 +266,7 @@
 <li><a class="reference internal" href="#sizing">Sizing</a></li>
 <li><a class="reference internal" href="#initial-text">Initial text</a></li>
 <li><a class="reference internal" href="#no-results-text">No results text</a></li>
+<li><a class="reference internal" href="#minimum-characters">Minimum characters</a></li>
 </ul>
 </li>
 </ul>

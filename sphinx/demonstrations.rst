@@ -264,3 +264,32 @@ You can provide a string for the dropdown when no results return. Try searching 
 .. raw:: html
 
     <hr>
+
+Minimum characters
+------------------
+
+Sets the number of characters that must be entered before the geocoder starts to automatically run. This example reduces the number to 2. Try searching "LAX."
+
+.. raw:: html
+
+   <form id="geocodify-minimum-characters"></form>
+   <script type="text/javascript">
+        $("#geocodify-minimum-characters").geocodify({
+            onSelect: function (result) { alert(result); },
+            minimumCharacters: 2
+        });
+   </script>
+
+.. code-block:: html
+
+   <form id="geocodify-minimum-characters"></form>
+   <script type="text/javascript">
+        $("#geocodify-minimum-characters").geocodify({
+            onSelect: function (result) { alert(result); },
+            minimumCharacters: 2
+        });
+   </script>
+
+.. raw:: html
+
+    <hr>
