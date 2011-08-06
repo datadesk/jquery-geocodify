@@ -128,7 +128,7 @@ Configuration
                 <th>Option</th>
                 <th>Use</th>
                 <th>Default</th>
-                <th>Example</th>
+                <th>Demonstration</th>
             </tr>
         </thead>
         <tbody>
@@ -143,6 +143,18 @@ Configuration
                     <a href="demonstrations.html#address-type-whitelisting">Link</a>
                 </td>
             </tr>
+            <tr>
+                <td><em>buttonValue</em></td>
+                <td>
+                    The text that appears in the form's submit button.
+                    It can be used to remove the button entirely but submitting false, null or an empty string.
+                </td>
+                <td>
+                    "GO"
+                </td>
+                <td>
+                    <a href="demonstrations.html#button-values">Link</a>
+                </td>                
         </tbody>
     </table>
 

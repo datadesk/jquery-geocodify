@@ -65,7 +65,7 @@
 <hr></div>
 <div class="section" id="id1">
 <h2>Address type whitelisting<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>The whitelist of acceptable address types is reduced to to only return airports. Try searching for &#8220;Charles De Gaulle.&#8221;</p>
+<p>The whitelist of acceptable address types can be used to filter the results before they appear in the dropdown. In this example, the form is configured to only return airports. Try searching for &#8220;Charles De Gaulle.&#8221;</p>
 <form id="address-type-whitelisting"></form>
 <script type="text/javascript">
      $("#address-type-whitelisting").geocodify({
@@ -86,6 +86,41 @@
 </pre></div>
 </div>
 <hr></div>
+<div class="section" id="id2">
+<h2>Button values<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>You can customize the text that appears in the submit button to be whatever you&#8217;ve like.</p>
+<form id="button-values-text"></form>
+<script type="text/javascript">
+     $("#button-values-text").geocodify({
+         onSelect: function (result) { alert(result); },
+         buttonValue: "Submit a search please"
+     });
+</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;button-values-text&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#button-values-text&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
+         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
+         <span class="nx">buttonValue</span><span class="o">:</span> <span class="s2">&quot;Submit a search please&quot;</span>
+     <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</div>
+<p>You can also remove the button entirely.</p>
+<form id="button-values-none"></form>
+<script type="text/javascript">
+     $("#button-values-none").geocodify({
+         onSelect: function (result) { alert(result); },
+         buttonValue: false
+     });
+</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;button-values-none&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#button-values-none&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
+         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
+         <span class="nx">buttonValue</span><span class="o">:</span> <span class="kc">false</span>
+     <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+</div>
+<hr></div>
 </div>
 
 
@@ -99,6 +134,7 @@
 <li><a class="reference internal" href="#">Demonstrations</a><ul>
 <li><a class="reference internal" href="#the-basic-box">The basic box</a></li>
 <li><a class="reference internal" href="#id1">Address type whitelisting</a></li>
+<li><a class="reference internal" href="#id2">Button values</a></li>
 </ul>
 </li>
 </ul>
