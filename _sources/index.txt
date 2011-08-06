@@ -107,11 +107,13 @@ The example above will just alert the selected address in the browser. It's a Ja
 Demonstrations
 ==============
 
-* :ref:`Basic box <basic-box>`
-* :ref:`Address type whitelist <address-type-whitelisting>`
-
 .. raw:: html
-
+   
+   <ul>
+      <li><a href="demonstrations.html#basic-box">Basic box</a>
+      <li><a href="demonstrations.html#address-type-whitelisting">Address type whitelist</a>
+      <li><a href="demonstrations.html#button-values">Button values</a>
+   </ul>
    <hr>
 
 Configuration
@@ -128,7 +130,7 @@ Configuration
                 <th>Option</th>
                 <th>Use</th>
                 <th>Default</th>
-                <th>Demonstration</th>
+                <th>Demo</th>
             </tr>
         </thead>
         <tbody>
@@ -153,7 +155,7 @@ Configuration
                     "GO"
                 </td>
                 <td>
-                    <a href="demonstrations.html#button-values">Link</a>
+                    <a href="demonstrations.html#button-values">Link</a> 
                 </td>                
         </tbody>
     </table>
@@ -188,6 +190,7 @@ TK ...
 .. raw:: html
 
    <hr>
+
 
 
 

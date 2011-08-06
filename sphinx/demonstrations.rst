@@ -11,33 +11,27 @@ Examples of jquery-geocodify in action. :doc:`Full documentation is elsewhere </
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js"></script>
 
-.. _basic-box:
 The basic box
 -------------
 
 .. raw:: html
 
-   <form id="basic-box"></form>
+   <form id="geocodify-basic-box"></form>
    <script type="text/javascript">
-        $("#basic-box").geocodify({
+        $("#geocodify-basic-box").geocodify({
             onSelect: function (result) { alert(result); }
         });
    </script>
 
 .. code-block:: html
 
-   <form id="basic-box"></form>
+   <form id="geocodify-basic-box"></form>
    <script type="text/javascript">
-        $("#basic-box").geocodify({
+        $("#geocodify-basic-box").geocodify({
             onSelect: function (result) { alert(result); }
         });
    </script>
 
-.. raw:: html
-
-    <hr>
-
-.. _address-type-whitelisting:
 Address type whitelisting
 -------------------------
 
@@ -45,24 +39,24 @@ The whitelist of acceptable address types can be used to filter the results befo
 
 .. raw:: html
 
-   <form id="address-type-whitelisting"></form>
+   <form id="geocodify-address-type-whitelisting"></form>
    <script type="text/javascript">
-        $("#address-type-whitelisting").geocodify({
+        $("#geocodify-address-type-whitelisting").geocodify({
             onSelect: function (result) { alert(result); },
             acceptableAddressTypes: [
-                'airport',
+                'airport'
             ]
         });
    </script>
 
 .. code-block:: html
 
-   <form id="address-type-whitelisting"></form>
+   <form id="geocodify-address-type-whitelisting"></form>
    <script type="text/javascript">
-        $("#address-type-whitelisting").geocodify({
+        $("#geocodify-address-type-whitelisting").geocodify({
             onSelect: function (result) { alert(result); },
             acceptableAddressTypes: [
-                'airport',
+                'airport'
             ]
         });
    </script>
@@ -70,18 +64,17 @@ The whitelist of acceptable address types can be used to filter the results befo
 .. raw:: html
 
     <hr>
-    
-.. _button-values:
+
 Button values
--------------------------
+-------------
 
 You can customize the text that appears in the submit button to be whatever you've like.
 
 .. raw:: html
 
-   <form id="button-values-text"></form>
+   <form id="geocodify-button-values-text"></form>
    <script type="text/javascript">
-        $("#button-values-text").geocodify({
+        $("#geocodify-button-values-text").geocodify({
             onSelect: function (result) { alert(result); },
             buttonValue: "Submit a search please"
         });
@@ -89,11 +82,11 @@ You can customize the text that appears in the submit button to be whatever you'
 
 .. code-block:: html
 
-   <form id="button-values-text"></form>
+   <form id="geocodify-button-values-text"></form>
    <script type="text/javascript">
-        $("#button-values-text").geocodify({
+        $("#geocodify-button-values-text").geocodify({
             onSelect: function (result) { alert(result); },
-            buttonValue: "Submit a search please"
+            buttonValue: "Submit a search, please"
         });
    </script>
    
@@ -102,9 +95,9 @@ You can also remove the button entirely.
 
 .. raw:: html
 
-   <form id="button-values-none"></form>
+   <form id="geocodify-button-values-none"></form>
    <script type="text/javascript">
-        $("#button-values-none").geocodify({
+        $("#geocodify-button-values-none").geocodify({
             onSelect: function (result) { alert(result); },
             buttonValue: false
         });
@@ -112,9 +105,9 @@ You can also remove the button entirely.
 
 .. code-block:: html
 
-   <form id="button-values-none"></form>
+   <form id="geocodify-button-values-none"></form>
    <script type="text/javascript">
-        $("#button-values-none").geocodify({
+        $("#geocodify-button-values-none").geocodify({
             onSelect: function (result) { alert(result); },
             buttonValue: false
         });
@@ -123,30 +116,5 @@ You can also remove the button entirely.
 .. raw:: html
 
     <hr>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
