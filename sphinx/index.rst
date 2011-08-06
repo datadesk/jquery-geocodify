@@ -21,6 +21,61 @@ Features
    <hr>
 
 
+Example
+======= 
+
+.. raw:: html
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js"></script>
+    <div style="height:40px;">
+        <form id="basic-box"></form>
+        <script type="text/javascript">
+          function updateMap(ele) {
+              var lng = ele.geometry.location.lng();
+              var lat = ele.geometry.location.lat();
+              var myLatlng = new google.maps.LatLng(lat, lng);
+              var myOptions = {
+                zoom: 10,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+              };
+              var map = new google.maps.Map(document.getElementById("map"), myOptions);
+              var marker = new google.maps.Marker({
+                  position: myLatlng, 
+                  map: map,
+                  title: ele.formatted_address
+              });
+          };
+          window.onload = function () {
+              var lng = -118.24496984481812;
+              var lat = 34.05297942802767;
+              var myLatlng = new google.maps.LatLng(lat, lng);
+              var myOptions = {
+                zoom: 17,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+              };
+              var map = new google.maps.Map(document.getElementById("map"), myOptions);
+              var marker = new google.maps.Marker({
+                  position: myLatlng, 
+                  map: map,
+                  title: "Los Angeles Times Globe Lobby"
+              });
+          }
+          $("#basic-box").geocodify({
+              onSelect: function (result) { updateMap(result); },
+              initialText: "Enter an address to see geocodify in action."
+          });
+        </script>
+    </div>
+    <div style="height:300px; width:400px; border:1px solid black;" id="map"></div>
+
+.. raw:: html
+
+   <hr>
+
 Getting Started
 ===============
 
