@@ -102,9 +102,11 @@
             // Fill in initialText, if it is specified
             if (settings.initialText) {
                 input.val(settings.initialText);
+                input.css("color", "#9C9C9C");
                 input.focus(function() {
                     if (input.val() == settings.initialText) {
                         input.val("");
+                        input.css("color", "black");
                     }
                 });
             }
