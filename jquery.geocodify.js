@@ -91,7 +91,8 @@
                     'outline-width': 'initial',
                     'outline-color': 'initial',
                     'line-height': settings.fontSize,
-                    'font-size': settings.fontSize
+                    'font-size': settings.fontSize,
+                    "border": "1px solid #9C9C9C"
                 })
                 .addClass("geocodifyInput")
                 .appendTo($this);
@@ -156,7 +157,7 @@
                     'top': input.height() + 2,
                     'left': 0,
                     'border': '1px solid #CCC',
-                    'width': settings.width - 1,
+                    'width': settings.width - 2,
                     'z-index': 8001
                 })
                 .addClass("geocodifyDropdown")
@@ -169,9 +170,6 @@
                 dropdown.empty();
                 dropdown.hide();
                 close.hide();
-                input.css({
-                    "border": "1px solid #9C9C9C"
-                });
             };
             
             // Create the bizness for how the geocoder work
@@ -191,7 +189,6 @@
                     dropdown.html("");
                     dropdown.hide();
                     close.hide();
-                    input.css("border", "1px solid #9C9C9C");
                     return false;
                 }
                 if (settings.prepSearchString) {
@@ -289,11 +286,6 @@
                                 .appendTo(ul);
                         });
                         ul.appendTo(dropdown);
-                        input.css({
-                            "border-top": "1px solid #2662CC",
-                            "border-right": "1px solid #2662CC",
-                            "border-left": "1px solid #2662CC"
-                        });
                         dropdown.show();
                         close.show();
                         close.click($this.reset)
