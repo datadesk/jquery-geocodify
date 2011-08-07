@@ -252,14 +252,20 @@ Downloads
         <thead>
             <tr>
                 <th>Version</th>
-                <th>URL</th>
+                <th style="text-align:center;">Unpacked</th>
+                <th style="text-align:center;">Minified</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Trunk, still in beta and could change significantly.</td>
-                <td><a href="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js">https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js</a></td>
+                <td>Trunk</td>
+                <td style="text-align:center;"><a href="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js">URL</a></td>
+                <td style="text-align:center;">&mdash;</td>
             </tr>
+            <tr>
+                <td>0.1</td>
+                <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.1/jquery.geocodify.js">URL</a></td>
+                <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.1/jquery.geocodify.min.js">URL</a></td>
         </tbody>
     </table>
     
