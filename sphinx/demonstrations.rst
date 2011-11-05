@@ -34,7 +34,7 @@ The basic box
 Address type whitelisting
 -------------------------
 
-The whitelist of acceptable address types can be used to filter the results before they appear in the dropdown. In this example, the form is configured to only return airports. Try searching for "Charles De Gaulle."
+The whitelist of acceptable address types can be used to filter the results before they appear in the dropdown. In this example, the form is configured to only return airports. Try searching for "LAX" or "Charles De Gaulle."
 
 .. raw:: html
 
@@ -44,7 +44,8 @@ The whitelist of acceptable address types can be used to filter the results befo
             onSelect: function (result) { alert(result); },
             acceptableAddressTypes: [
                 'airport'
-            ]
+            ],
+            minimumCharacters: 3
         });
    </script>
 
@@ -56,7 +57,8 @@ The whitelist of acceptable address types can be used to filter the results befo
             onSelect: function (result) { alert(result); },
             acceptableAddressTypes: [
                 'airport'
-            ]
+            ],
+            minimumCharacters: 3
         });
    </script>
 
