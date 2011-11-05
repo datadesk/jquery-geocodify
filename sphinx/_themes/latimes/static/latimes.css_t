@@ -316,3 +316,22 @@ div.section {
     margin-bottom:10px;
     padding:0 0 0 0;
 }
+
+/* Tables */
+
+table {
+    border-spacing: 0;
+}
+
+table th, td {
+    padding: 7px 14px;
+}
+
+table th {
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+}
+
+table td {
+    border-bottom: 1px dotted gray;
+}
