@@ -258,10 +258,10 @@
                         close.show();
                         close.click($this.reset);
                     } else if (count === 1 && force) {
-                        settings.onSelect(results[0]);
+                        settings.onSelect(keep[0]);
                         $this.reset();
                         $this.previousSearch = results[0].formatted_address;
-                        input.val(results[0].formatted_address);
+                        input.val(keep[0].formatted_address);
                     } else {
                         var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
                         $.each(keep, function(i, val) {
