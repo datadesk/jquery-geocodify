@@ -94,7 +94,7 @@
                     'width': settings.width,
                     'height': settings.height,
                     'line-height': settings.fontSize,
-                    'font-size': settings.fontSize,
+                    'font-size': settings.fontSize
                 })
                 .css(settings.css)
                 .addClass("geocodifyInput")
