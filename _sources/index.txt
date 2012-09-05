@@ -263,9 +263,16 @@ Downloads
                 <td style="text-align:center;">&mdash;</td>
             </tr>
             <tr>
+                <td>0.11</td>
+                <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.11/jquery.geocodify.js">URL</a></td>
+                <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.11/jquery.geocodify.min.js">URL</a></td>
+            </tr>
+
+            <tr>
                 <td>0.1</td>
                 <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.1/jquery.geocodify.js">URL</a></td>
                 <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.1/jquery.geocodify.min.js">URL</a></td>
+            </tr>
         </tbody>
     </table>
     

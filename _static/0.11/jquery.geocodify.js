@@ -15,6 +15,17 @@
           'errorHandler': null,
           'initialText': null,
           'noResultsText': "No results found. Please refine your search.",
+          'css': {
+                'padding': 0,
+                'margin': 0,
+                'position': 'absolute',
+                'top': 0,
+                'left': 0,
+                'outline-style': 'none',
+                'outline-width': 'initial',
+                'outline-color': 'initial',
+                "border": "1px solid #9C9C9C"
+            },
           'acceptableAddressTypes': [
                 'street_address',
                 'route',
@@ -80,20 +91,12 @@
             $('<input>')
                 .attr({type: 'text', id: inputId})
                 .css({
-                    'padding': '0',
-                    'margin': 0,
-                    'position': 'absolute',
-                    'top': 0,
-                    'left': 0,
                     'width': settings.width,
                     'height': settings.height,
-                    'outline-style': 'none',
-                    'outline-width': 'initial',
-                    'outline-color': 'initial',
                     'line-height': settings.fontSize,
-                    'font-size': settings.fontSize,
-                    "border": "1px solid #9C9C9C"
+                    'font-size': settings.fontSize
                 })
+                .css(settings.css)
                 .addClass("geocodifyInput")
                 .appendTo($this);
             document.getElementById(inputId).setAttribute("autocomplete", "off");
@@ -255,10 +258,10 @@
                         close.show();
                         close.click($this.reset);
                     } else if (count === 1 && force) {
-                        settings.onSelect(results[0]);
+                        settings.onSelect(keep[0]);
                         $this.reset();
                         $this.previousSearch = results[0].formatted_address;
-                        input.val(results[0].formatted_address);
+                        input.val(keep[0].formatted_address);
                     } else {
                         var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
                         $.each(keep, function(i, val) {
