@@ -8,7 +8,7 @@
           'buttonValue': 'GO',
           'regionBias': null,
           'viewportBias': null,
-          'onSelect': function(ele) { alert('Jump to: ' + ele.formatted_address )},
+          'onSelect': function(ele) { alert('Jump to: ' + ele.formatted_address ); },
           'minimumCharacters': 5,
           'prepSearchString': null,
           'filterResults': null,
@@ -50,7 +50,7 @@
                 'street_number',
                 'floor',
                 'room'
-            ], 
+            ],
             'keyCodes' : {
                 UP: 38,
                 DOWN: 40,
@@ -68,14 +68,14 @@
         return this.each(function() {
             var $this = $(this);
             
-            if ( options ) { 
-                $.extend( settings, options );
+            if (options) {
+                $.extend(settings, options);
             }
             
             // Clear out any existing stuff inside the form and set its style
             $this
                 .empty()
-                .css({ 
+                .css({
                     'position': 'relative',
                     'margin': 0,
                     'padding': 0,
@@ -184,10 +184,10 @@
             $this.fetch = function(query, force) {
                 if (query === $this.previousSearch && !(force)) {
                     return false;
-                };
+                }
                 if (query === settings.initialText) {
                     return false;
-                };
+                }
                 $this.previousSearch = query;
                 var qLength = query.length;
                 if (qLength < settings.minimumCharacters && !(force)) {
@@ -202,10 +202,10 @@
                 var params = { 'address': query };
                 if (settings.regionBias) {
                     params['region'] = settings.regionBias;
-                };
+                }
                 if (settings.viewportBias) {
                     params['bounds'] = settings.viewportBias;
-                };
+                }
                 this.google.geocode(params, $this.onGeocode(force));
             };
             
@@ -219,12 +219,12 @@
                         if (settings.errorHandler) {
                             settings.errorHandler(results, status);
                             return false;
-                        };
-                    };
+                        }
+                    }
                     
                     // Loop through the results and filter out precision
                     // levels we will not accept.
-                    var keep = new Array();
+                    var keep = [];
                     $.each(results, function(i, val) {
                         $.each(val.types, function(ii, type) {
                             if (new RegExp(type).test(settings.acceptableAddressTypes.join("|"))) {
@@ -237,11 +237,13 @@
                     // Further filter the results if a function has been provided
                     if (settings.filterResults) {
                         keep = settings.filterResults(keep);
-                    };
+                    }
                     
-                    var count = keep.length;
+                    var count = keep.length,
+                        ul;
+
                     if (count === 0) {
-                        var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
+                        ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
                         var li = $("<li>")
                             .html(settings.noResultsText)
                             .css({
@@ -251,7 +253,7 @@
                                     'list-style-type': 'none',
                                     'text-align': 'left'
                                 })
-                            .appendTo(ul)
+                            .appendTo(ul);
                         ul.appendTo(dropdown);
                         dropdown.show();
                         $("li", dropdown).css("cursor", "default");
@@ -263,7 +265,7 @@
                         $this.previousSearch = results[0].formatted_address;
                         input.val(keep[0].formatted_address);
                     } else {
-                        var ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
+                        ul = $("<ul>").css({'margin': 0, 'padding': 0, 'background-color': 'white'});
                         $.each(keep, function(i, val) {
                             $('<li>')
                                 .html(val.formatted_address)
@@ -282,7 +284,7 @@
                                     input.val(val.formatted_address);
                                 })
                                 .hover(
-                                    function() { 
+                                    function() {
                                         $(this).css({'background-color': '#EEE', 'cursor': 'pointer'});
                                     },
                                     function() {
@@ -293,13 +295,13 @@
                         ul.appendTo(dropdown);
                         dropdown.show();
                         close.show();
-                        close.click($this.reset)
+                        close.click($this.reset);
                     }
-                }
+                };
             };
             
             // Bind our geocoding operation to the form
-            setInterval(function(){$this.fetch(input.val(), false)}, 250);
+            setInterval(function(){ $this.fetch(input.val(), false); }, 250);
             $this.submit(function(){return false;});
             if (button) {
                 button.click(function(){$this.fetch(input.val(), true);return false;});
@@ -307,17 +309,20 @@
             
             // Bind key up and down events
             $this.bind(($.browser.opera ? "keypress" : "keydown"), function(event) {
+                var resultList,
+                    selectedIndex;
+
                 switch(event.keyCode) {
                     case settings.keyCodes.UP:
-                        var resultList = $("li", dropdown);
-                        var selectedIndex = 0;
+                        resultList = $("li", dropdown);
+                        selectedIndex = 0;
                         $.each(resultList, function(i, li) {
                             if ( $(li).hasClass("selected") ) {
                                 selectedIndex = i;
                                 $(li)
                                     .removeClass("selected")
                                     .css({'background-color': 'white'});
-                            };
+                            }
                         });
                         if (selectedIndex -1 < 0) {
                             break;
@@ -327,14 +332,14 @@
                             .css({'background-color': '#EEE'});
                         break;
                     case settings.keyCodes.DOWN:
-                        var resultList = $("li", dropdown);
-                        var selectedIndex = -1;
+                        resultList = $("li", dropdown);
+                        selectedIndex = -1;
                         $.each(resultList, function(i, li) {
                             if ( $(li).hasClass("selected") ) {
                                 selectedIndex = i;
                                 $(li).removeClass("selected")
                                     .css({'background-color': 'white'});
-                            };
+                            }
                         });
                         if (selectedIndex -1 >= resultList.length) {
                             break;
@@ -344,7 +349,7 @@
                             .css({'background-color': '#EEE'});
                         break;
                     case settings.keyCodes.RETURN:
-                        var resultList = $("li.selected", dropdown);
+                        resultList = $("li.selected", dropdown);
                         if (resultList) {
                             resultList.click();
                         } else {
@@ -353,9 +358,9 @@
                         break;
                     default:
                         break;
-                };
+                }
             });
 
         });
     };
-})( jQuery );
+})(jQuery);
