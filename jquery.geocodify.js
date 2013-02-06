@@ -308,7 +308,7 @@
             }
             
             // Bind key up and down events
-            $this.bind(($.browser.opera ? "keypress" : "keydown"), function(event) {
+            $this.bind("keydown", function(event) {
                 var resultList,
                     selectedIndex;
 
