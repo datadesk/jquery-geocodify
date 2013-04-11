@@ -207,6 +207,7 @@
             // Bind our geocoding operation to the form
             setInterval(function() { $this.fetch(input.val(), false); }, 250);
             $this.submit(function() {return false; });
+
             // Bind key up and down events
             $this.bind("keydown", function(event) {
                 var resultList,
