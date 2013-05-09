@@ -251,8 +251,6 @@ Examples of jquery-geocodify in action. :doc:`Full documentation is elsewhere </
 .. raw:: html
 
    <hr>
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <script type="text/javascript" src="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js"></script>
 
 The basic box
 -------------
@@ -303,58 +301,6 @@ The whitelist of acceptable address types can be used to filter the results befo
                 'airport'
             ],
             minimumCharacters: 3
-        });
-   </script>
-
-.. raw:: html
-
-    <hr>
-
-Button values
--------------
-
-You can customize the text that appears in the submit button to be whatever you've like.
-
-.. raw:: html
-
-   <form id="geocodify-button-values-text"></form>
-   <script type="text/javascript">
-        $("#geocodify-button-values-text").geocodify({
-            onSelect: function (result) { alert(result); },
-            buttonValue: "Submit a search, please"
-        });
-   </script>
-
-.. code-block:: html
-
-   <form id="geocodify-button-values-text"></form>
-   <script type="text/javascript">
-        $("#geocodify-button-values-text").geocodify({
-            onSelect: function (result) { alert(result); },
-            buttonValue: "Submit a search, please"
-        });
-   </script>
-   
-
-You can also remove the button entirely.
-
-.. raw:: html
-
-   <form id="geocodify-button-values-none"></form>
-   <script type="text/javascript">
-        $("#geocodify-button-values-none").geocodify({
-            onSelect: function (result) { alert(result); },
-            buttonValue: false
-        });
-   </script>
-
-.. code-block:: html
-
-   <form id="geocodify-button-values-none"></form>
-   <script type="text/javascript">
-        $("#geocodify-button-values-none").geocodify({
-            onSelect: function (result) { alert(result); },
-            buttonValue: false
         });
    </script>
 
@@ -544,39 +490,6 @@ A function that treats the search string before it is passed to the geocoder. Th
                     return query;
                 }
             }
-        });
-   </script>
-
-.. raw:: html
-
-    <hr>
-
-Sizing
-------
-
-You can customize the size of the text input and submit button with a combination of config options.
-
-.. raw:: html
-
-   <form id="geocodify-sizing"></form>
-   <script type="text/javascript">
-        $("#geocodify-sizing").geocodify({
-            onSelect: function (result) { alert(result); },
-            fontSize: "12px",
-            height: 20,
-            width: 250
-        });
-   </script>
-
-.. code-block:: html
-
-   <form id="geocodify-sizing"></form>
-   <script type="text/javascript">
-        $("#geocodify-sizing").geocodify({
-            onSelect: function (result) { alert(result); },
-            fontSize: "12px",
-            height: 20,
-            width: 250
         });
    </script>
 
