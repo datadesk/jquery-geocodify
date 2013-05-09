@@ -1,41 +1,20 @@
+
 (function($) {
     $.fn.geocodify = function(options) {
         var settings = {
             'regionBias': null,
             'viewportBias': null,
-            'onSelect': function(ele) { alert('Jump to: ' + ele.formatted_address); },
+            'onSelect': function(ele) {
+                alert('Jump to: ' + ele.formatted_address);
+            },
             'minimumCharacters': 5,
             'prepSearchString': null,
             'filterResults': null,
             'errorHandler': null,
             'initialText': null,
             'noResultsText': "No results found. Please refine your search.",
-            'acceptableAddressTypes': [
-                'street_address',
-                'route',
-                'intersection',
-                'political',
-                'country',
-                'administrative_area_level_1',
-                'administrative_area_level_2',
-                'administrative_area_level_3 ',
-                'colloquial_area',
-                'locality',
-                'sublocality',
-                'neighborhood',
-                'premise',
-                'subpremise',
-                'postal_code',
-                'natural_feature',
-                'airport',
-                'park',
-                'point_of_interest',
-                'post_box',
-                'street_number',
-                'floor',
-                'room'
-            ],
-            'keyCodes' : {
+            'acceptableAddressTypes': ['street_address', 'route', 'intersection', 'political', 'country', 'administrative_area_level_1', 'administrative_area_level_2', 'administrative_area_level_3 ', 'colloquial_area', 'locality', 'sublocality', 'neighborhood', 'premise', 'subpremise', 'postal_code', 'natural_feature', 'airport', 'park', 'point_of_interest', 'post_box', 'street_number', 'floor', 'room'],
+            'keyCodes': {
                 UP: 38,
                 DOWN: 40,
                 DEL: 46,
@@ -66,7 +45,10 @@
 
             // Add a text input
             $('<input>')
-                .attr({type: 'text', id: inputId})
+                .attr({
+                type: 'text',
+                id: inputId
+            })
                 .addClass("geocodifyInput")
                 .appendTo($this);
             document.getElementById(inputId).setAttribute("autocomplete", "off");
@@ -81,14 +63,16 @@
 
             // Add the dropdown box
             $("<div>")
-                .attr({id: dropdownId})
+                .attr({
+                id: dropdownId
+            })
                 .addClass("geocodifyDropdown")
                 .hide()
                 .appendTo($this);
             dropdown = $("#" + dropdownId);
 
             // Define what will happen when the form is reset
-            $this.reset = function () {
+            $this.reset = function() {
                 dropdown.empty();
                 dropdown.hide();
             };
@@ -109,7 +93,9 @@
 
                 $this.previousSearch = query;
                 var qLength = query.length,
-                    params = { 'address': query };
+                    params = {
+                        'address': query
+                    };
 
                 if (qLength < settings.minimumCharacters && force !== true) {
                     dropdown.html("");
@@ -187,15 +173,20 @@
                             $('<li>')
                                 .html(val.formatted_address)
                                 .click(function() {
-                                    settings.onSelect(val);
-                                    $this.reset();
-                                    $this.previousSearch = val.formatted_address;
-                                    input.val(val.formatted_address);
-                                })
+                                settings.onSelect(val);
+                                $this.reset();
+                                $this.previousSearch = val.formatted_address;
+                                input.val(val.formatted_address);
+                            })
                                 .hover(
-                                    function() { $(this).addClass("selected"); },
-                                    function() { $(this).removeClass("selected"); }
-                                )
+
+                            function() {
+                                $(this).addClass("selected");
+                            },
+
+                            function() {
+                                $(this).removeClass("selected");
+                            })
                                 .appendTo(ul);
                         });
                         ul.appendTo(dropdown);
@@ -205,56 +196,60 @@
             };
 
             // Bind our geocoding operation to the form
-            setInterval(function() { $this.fetch(input.val(), false); }, 250);
-            $this.submit(function() {return false; });
+            setInterval(function() {
+                $this.fetch(input.val(), false);
+            }, 250);
+            $this.submit(function() {
+                return false;
+            });
 
             // Bind key up and down events
             $this.bind("keydown", function(event) {
                 var resultList,
-                    selectedIndex;
+                selectedIndex;
 
                 switch (event.keyCode) {
-                case settings.keyCodes.UP:
-                    resultList = $("li", dropdown);
-                    selectedIndex = 0;
-                    $.each(resultList, function(i, li) {
-                        if ($(li).hasClass("selected")) {
-                            selectedIndex = i;
-                            $(li).removeClass("selected");
+                    case settings.keyCodes.UP:
+                        resultList = $("li", dropdown);
+                        selectedIndex = 0;
+                        $.each(resultList, function(i, li) {
+                            if ($(li).hasClass("selected")) {
+                                selectedIndex = i;
+                                $(li).removeClass("selected");
+                            }
+                        });
+                        if (selectedIndex - 1 < 0) {
+                            break;
                         }
-                    });
-                    if (selectedIndex - 1 < 0) {
+                        $(resultList[selectedIndex - 1]).addClass("selected");
                         break;
-                    }
-                    $(resultList[selectedIndex - 1]).addClass("selected");
-                    break;
-                case settings.keyCodes.DOWN:
-                    resultList = $("li", dropdown);
-                    selectedIndex = -1;
-                    $.each(resultList, function(i, li) {
-                        if ($(li).hasClass("selected")) {
-                            selectedIndex = i;
-                            $(li).removeClass("selected");
+                    case settings.keyCodes.DOWN:
+                        resultList = $("li", dropdown);
+                        selectedIndex = -1;
+                        $.each(resultList, function(i, li) {
+                            if ($(li).hasClass("selected")) {
+                                selectedIndex = i;
+                                $(li).removeClass("selected");
+                            }
+                        });
+                        if (selectedIndex - 1 >= resultList.length) {
+                            break;
                         }
-                    });
-                    if (selectedIndex - 1 >= resultList.length) {
+                        $(resultList[selectedIndex + 1]).addClass("selected");
                         break;
-                    }
-                    $(resultList[selectedIndex + 1]).addClass("selected");
-                    break;
-                case settings.keyCodes.RETURN:
-                    resultList = $("li.selected", dropdown);
-                    if (resultList) {
-                        resultList.click();
-                    } else {
-                        $this.fetch(input.val(), true);
-                    }
-                    break;
-                default:
-                    break;
+                    case settings.keyCodes.RETURN:
+                        resultList = $("li.selected", dropdown);
+                        if (resultList) {
+                            resultList.click();
+                        } else {
+                            $this.fetch(input.val(), true);
+                        }
+                        break;
+                    default:
+                        break;
                 }
             });
 
         });
     };
-})(jQuery);
+})(jQuery); 
