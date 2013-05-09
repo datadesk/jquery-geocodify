@@ -24,8 +24,8 @@
     display:block;
     z-index: 9003;
     width: 325px;
-    margin: 0;
-    padding: 5px 0;
+    margin: 0 !important;
+    padding: 5px 0 !important;
     background-color: white;
     border-top-color: #D9D9D9;
     border: 1px solid #ccc;
@@ -35,8 +35,8 @@
 }
 
 .geocodifyDropdown ul {
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .geocodifyDropdown li {
