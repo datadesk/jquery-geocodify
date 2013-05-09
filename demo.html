@@ -1,15 +1,18 @@
 <html>
 <head>
+    <style type="text/css">
+        body { font-family: Arial, sans-serif; font-size:13px; }
+    </style>
     <link rel="stylesheet" href="jquery.geocodify.css"/>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="jquery.geocodify.js"></script>
-    <style type="text/css">
-        body {font-family:Georgia;}
-    </style>
 </head>
 <body>
-    <div id="geocoder"></div>
+    <div>
+        <div id="geocoder"></div>
+        <p>Text goes here and should appear under the dropdown when it shows up.</p>
+    </div>
     <script type="text/javascript">
         var maxY = 34.34343606848294;
         var minY = 33.66263917576218;
