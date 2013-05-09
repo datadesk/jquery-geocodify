@@ -26,8 +26,6 @@ Example
 
 .. raw:: html
 
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <script type="text/javascript" src="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js"></script>
     <div style="height:40px;">
         <form id="basic-box"></form>
         <script type="text/javascript">
@@ -82,8 +80,9 @@ Import all the dependencies in your page's head
 
 .. code-block:: html
 
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> 
+    <link rel="stylesheet" href="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.css" />
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js"></script>
 
 Add an empty form to your page's body and initialize it with instructions for what function to run when the user selects an address
