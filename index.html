@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="_static/0.2.0/jquery.geocodify.css"/>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="_static/0.2.0/jquery.geocodify.js"></script>
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
 
   </head>
   <body>              
@@ -296,19 +297,11 @@
      $("#geocodify-filter-results").geocodify({
          onSelect: function (result) { alert(result); },
          filterResults: function(results) {
-             var filteredResults =[];
-             $.each(results, function(i,val) {
-                 for (var ac in val.address_components) {
-                     for (var t in val.address_components[ac].types) {
-                         if (val.address_components[ac].types[t] === 'administrative_area_level_2') {
-                             if (val.address_components[ac].long_name === 'Los Angeles') {
-                                 filteredResults.push(val);
-                             }
-                         }
-                     }
-                 }
+             return _.filter(results, function(addy) {
+                 return _.some(addy.address_components, function(component) {
+                     return component.long_name === 'Los Angeles County';
+                 });
              });
-             return filteredResults;
          }
      });
 </script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-filter-results&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
@@ -316,19 +309,13 @@
      <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-filter-results&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
          <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
          <span class="nx">filterResults</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
-             <span class="kd">var</span> <span class="nx">filteredResults</span> <span class="o">=</span><span class="p">[];</span>
-             <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">results</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-                 <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">ac</span> <span class="k">in</span> <span class="nx">val</span><span class="p">.</span><span class="nx">address_components</span><span class="p">)</span> <span class="p">{</span>
-                     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">t</span> <span class="k">in</span> <span class="nx">val</span><span class="p">.</span><span class="nx">address_components</span><span class="p">[</span><span class="nx">ac</span><span class="p">].</span><span class="nx">types</span><span class="p">)</span> <span class="p">{</span>
-                         <span class="k">if</span> <span class="p">(</span><span class="nx">val</span><span class="p">.</span><span class="nx">address_components</span><span class="p">[</span><span class="nx">ac</span><span class="p">].</span><span class="nx">types</span><span class="p">[</span><span class="nx">t</span><span class="p">]</span> <span class="o">===</span> <span class="s1">&#39;administrative_area_level_2&#39;</span><span class="p">)</span> <span class="p">{</span>
-                             <span class="k">if</span> <span class="p">(</span><span class="nx">val</span><span class="p">.</span><span class="nx">address_components</span><span class="p">[</span><span class="nx">ac</span><span class="p">].</span><span class="nx">long_name</span> <span class="o">===</span> <span class="s1">&#39;Los Angeles&#39;</span><span class="p">)</span> <span class="p">{</span>
-                                 <span class="nx">filteredResults</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
-                             <span class="p">}</span>
-                         <span class="p">}</span>
-                     <span class="p">}</span>
-                 <span class="p">}</span>
+             <span class="c1">// Using some underscore.js tricks here to filter faster</span>
+             <span class="c1">// http://underscorejs.org/</span>
+             <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">results</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">addy</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">some</span><span class="p">(</span><span class="nx">addy</span><span class="p">.</span><span class="nx">address_components</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">component</span><span class="p">)</span> <span class="p">{</span>
+                     <span class="k">return</span> <span class="nx">component</span><span class="p">.</span><span class="nx">long_name</span> <span class="o">===</span> <span class="s1">&#39;Los Angeles County&#39;</span><span class="p">;</span>
+                 <span class="p">});</span>
              <span class="p">});</span>
-             <span class="k">return</span> <span class="nx">filteredResults</span><span class="p">;</span>
          <span class="p">}</span>
      <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>

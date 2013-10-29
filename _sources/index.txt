@@ -320,19 +320,11 @@ Geocoder results can be filtered before they appear in the dropdown by passing i
         $("#geocodify-filter-results").geocodify({
             onSelect: function (result) { alert(result); },
             filterResults: function(results) {
-                var filteredResults =[];
-                $.each(results, function(i,val) {
-                    for (var ac in val.address_components) {
-                        for (var t in val.address_components[ac].types) {
-                            if (val.address_components[ac].types[t] === 'administrative_area_level_2') {
-                                if (val.address_components[ac].long_name === 'Los Angeles') {
-                                    filteredResults.push(val);
-                                }
-                            }
-                        }
-                    }
+                return _.filter(results, function(addy) {
+                    return _.some(addy.address_components, function(component) {
+                        return component.long_name === 'Los Angeles County';
+                    });
                 });
-                return filteredResults;
             }
         });
    </script>
@@ -344,19 +336,13 @@ Geocoder results can be filtered before they appear in the dropdown by passing i
         $("#geocodify-filter-results").geocodify({
             onSelect: function (result) { alert(result); },
             filterResults: function(results) {
-                var filteredResults =[];
-                $.each(results, function(i,val) {
-                    for (var ac in val.address_components) {
-                        for (var t in val.address_components[ac].types) {
-                            if (val.address_components[ac].types[t] === 'administrative_area_level_2') {
-                                if (val.address_components[ac].long_name === 'Los Angeles') {
-                                    filteredResults.push(val);
-                                }
-                            }
-                        }
-                    }
+                // Using some underscore.js tricks here to filter faster
+                // http://underscorejs.org/
+                return _.filter(results, function(addy) {
+                    return _.some(addy.address_components, function(component) {
+                        return component.long_name === 'Los Angeles County';
+                    });
                 });
-                return filteredResults;
             }
         });
    </script>
