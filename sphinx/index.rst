@@ -438,7 +438,7 @@ Sets the number of characters that must be entered before the geocoder starts to
 Prep search string
 ------------------
 
-A function that treats the search string before it is passed to the geocoder. This example adds "California" to the search if the user has no provided it.
+A function that treats the search string before it is passed to the geocoder. This example adds "California" to the search if the user has not provided it.
 
 .. raw:: html
 
