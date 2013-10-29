@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="jquery.geocodify.css"/>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
     <script type="text/javascript" src="jquery.geocodify.js"></script>
 </head>
 <body>
@@ -30,16 +31,13 @@
                  new google.maps.LatLng(35.0120020431607,-117.44384765625)
              ),
             filterResults: function(results) {
-             var filteredResults =[];
-             $.each(results, function(i,val) {
-                 var location = val.geometry.location;
-                 if (location.lat() > minY && location.lat() < maxY) {
-                     if (location.lng() > minX && location.lng() < maxX) {
-                         filteredResults.push(val);
-                    }
-                 }
-             });
-             return filteredResults;
+                var filteredResults =[];
+                $.each(results, function(i,val) {
+                    if (_.some(val.address_components, function(o) {
+                        return o.long_name === 'Los Angeles County';
+                    })) { filteredResults.push(val); };
+                });
+                return filteredResults;
             }
         });
     </script>
