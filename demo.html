@@ -31,13 +31,11 @@
                  new google.maps.LatLng(35.0120020431607,-117.44384765625)
              ),
             filterResults: function(results) {
-                var filteredResults =[];
-                $.each(results, function(i,val) {
-                    if (_.some(val.address_components, function(o) {
-                        return o.long_name === 'Los Angeles County';
-                    })) { filteredResults.push(val); };
+                return _.filter(results, function(addy) {
+                    return _.some(addy.address_components, function(component) {
+                        return component.long_name === 'Los Angeles County';
+                    });
                 });
-                return filteredResults;
             }
         });
     </script>
