@@ -67,7 +67,7 @@ Example
           });
         </script>
     </div>
-    <div style="height:300px; width:400px; border:1px solid black;" id="map"></div>
+    <div style="height:300px; width:100%; border:1px dotted #ddd;" id="map"></div>
 
 .. raw:: html
 
@@ -80,10 +80,10 @@ Import all the dependencies in your page's head
 
 .. code-block:: html
 
-    <link rel="stylesheet" href="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.css" />
+    <link rel="stylesheet" href="http://datadesk.github.io/jquery-geocodify/_static/0.2.0/jquery.geocodify.css" />
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js"></script>
+    <script type="text/javascript" src="http://datadesk.github.io/jquery-geocodify/_static/0.2.0/jquery.geocodify.min.js"></script>
 
 Add an empty form to your page's body and initialize it with instructions for what function to run when the user selects an address
 
@@ -207,6 +207,7 @@ Downloads
                 <th>Version</th>
                 <th style="text-align:center;">Unpacked</th>
                 <th style="text-align:center;">Minified</th>
+                <th style="text-align:center;">CSS</th>
             </tr>
         </thead>
         <tbody>
@@ -214,21 +215,25 @@ Downloads
                 <td>Trunk</td>
                 <td style="text-align:center;"><a href="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js">URL</a></td>
                 <td style="text-align:center;">&mdash;</td>
+                <td style="text-align:center;"><a href="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.css">URL</a></td>
             </tr>
             <tr>
                 <td>0.2.0</td>
                 <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.2.0/jquery.geocodify.js">URL</a></td>
                 <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.2.0/jquery.geocodify.min.js">URL</a></td>
+                <td style="text-align:center;"><a href="http://datadesk.github.io/jquery-geocodify/_static/0.2.0/jquery.geocodify.css">URL</a></td>
             </tr>
             <tr>
                 <td>0.11</td>
                 <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.11/jquery.geocodify.js">URL</a></td>
                 <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.11/jquery.geocodify.min.js">URL</a></td>
+                <td style="text-align:center;">&mdash;</td>
             </tr>
             <tr>
                 <td>0.1</td>
                 <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.1/jquery.geocodify.js">URL</a></td>
                 <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.1/jquery.geocodify.min.js">URL</a></td>
+                <td style="text-align:center;">&mdash;</td>
             </tr>
         </tbody>
     </table>
