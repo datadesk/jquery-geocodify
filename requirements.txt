@@ -1,0 +1,6 @@
+Jinja2==2.7.2
+MarkupSafe==0.19
+Pygments==1.6
+Sphinx==1.2.2
+argparse==1.2.1
+docutils==0.11
