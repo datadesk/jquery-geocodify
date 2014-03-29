@@ -4,6 +4,23 @@
     <link rel="stylesheet" type="text/css" href="http://datadesk.github.io/jquery-geocodify/_static/0.2.0/jquery.geocodify.css"/>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="http://datadesk.github.io/jquery-geocodify/_static/0.2.0/jquery.geocodify.min.js"></script>
+    <style type="text/css">
+        .geocodifyInput {
+            border: 1px solid #CCCCCC !important;
+            color: #000000 !important;
+            font-family: inherit !important;
+            font-size: 14px !important;
+            height: 14px !important;
+            line-height: 20px !important;
+            margin: 0 !important;
+            outline: medium none !important;
+            padding: 9px 5px !important;
+            position: relative !important;
+            vertical-align: top !important;
+            width: 315px !important;
+            z-index: 9002 !important;
+        }
+    </style>
 
 ================
 jquery-geocodify
