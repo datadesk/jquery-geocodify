@@ -23,7 +23,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="jquery-geocodify 0.2 documentation" href="#" /> 
+    <link rel="top" title="jquery-geocodify 0.2 documentation" href="#" />
+    <link rel="next" title="How it works" href="howitworks.html" /> 
   </head>
   <body>
     <div class="related">
@@ -32,6 +33,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="howitworks.html" title="How it works"
+             accesskey="N">next</a> |</li>
         <li><a href="#">jquery-geocodify 0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -130,363 +134,36 @@
     </script>
 </div>
 <div style="height:300px; width:100%; border:1px dotted #ddd;" id="map"></div></div>
-<div class="section" id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>Import all the dependencies in your page&#8217;s head</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;http://datadesk.github.io/jquery-geocodify/_static/0.2.0/jquery.geocodify.css&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://maps.googleapis.com/maps/api/js?sensor=false&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://datadesk.github.io/jquery-geocodify/_static/0.2.0/jquery.geocodify.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</pre></div>
-</div>
-<p>Add an empty form to your page&#8217;s body and initialize it with instructions for what function to run when the user selects an address</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocoder&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocoder&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
-        <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">}</span>
-    <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-</pre></div>
-</div>
-<p>The example above will just alert the selected address in the browser. It&#8217;s a JavaScript representation of what is returned by <a class="reference external" href="http://code.google.com/apis/maps/documentation/geocoding/#GeocodingResponses">the Google Maps geocoder.</a></p>
-</div>
-<div class="section" id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
-<p><strong>Required arguments</strong></p>
-<table>
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Use</th>
-            <th>Default</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><em>onSelect</em></td>
-            <td>
-                A function that takes the Google geocoder's result object and decides what to do with it, like it load it on a map, or redirect to another page, or whatever you need.
-            </td>
-            <td>An ugly alert with the result's address.</td>
-        </tr>
-    </tbody>
-</table><p><strong>Optional arguments</strong></p>
-<table>
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Use</th>
-            <th>Default</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><em>acceptableAddressTypes</em></td>
-            <td>
-                A whitelist of address types allowed to appear in the results.
-                Drawn from <a href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingAddressTypes">the set defined by Google's geocoder</a>.
-            </td>
-            <td>All types accepted</td>
-        </tr>
-        <tr>
-            <td><em>errorHandler</em></td>
-            <td>A function for handling errors returned by the Google geocoder.</td>
-            <td>null</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><em>filterResults</em></td>
-            <td>A function for filtering results before they appear in the dropdown.</td>
-            <td>null</td>
-        </tr>
-        <tr>
-            <td><em>initialText</em></td>
-            <td>Sets a default string to appear when the box loads.</td>
-            <td>null</td>
-        </tr>
-        <tr>
-            <td><em>minimumCharacters</em></td>
-            <td>Sets the number of characters that must be entered before the geocoder starts to automatically run.</td>
-            <td>5</td>
-        <tr>
-            <td><em>noResultsText</em></td>
-            <td>The text that appears when a search returns no results.</td>
-            <td>"No results found. Please refine your search."</td>
-        </tr>
-        <tr>
-            <td><em>prepSearchString</em></td>
-            <td>A function that treats the search string before it is passed to the geocoder.</td>
-            <td>null</td>
-        </tr>
-        <tr>
-            <td><em>regionBias</em></td>
-            <td>Instruct the geocoder to return results biased towards a particular region of the world. More information about the available codes can be found <a href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingRegionCodes">here</a>.</td>
-            <td>null</td>
-        </tr>
-        <tr>
-            <td><em>viewportBias</em></td>
-            <td>Instruct the geocoder to return results biased towards a bounding box presented in Google's data format. Google's documentation can be found <a href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingViewports">here</a>.</td>
-            <td>null</td>
-        </tr>
-    </tbody>
-</table><hr></div>
-<div class="section" id="downloads">
-<h2>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h2>
-<table>
-    <thead>
-        <tr>
-            <th>Version</th>
-            <th style="text-align:center;">Unpacked</th>
-            <th style="text-align:center;">Minified</th>
-            <th style="text-align:center;">CSS</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Trunk</td>
-            <td style="text-align:center;"><a href="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.js">URL</a></td>
-            <td style="text-align:center;">&mdash;</td>
-            <td style="text-align:center;"><a href="https://raw.github.com/datadesk/jquery-geocodify/master/jquery.geocodify.css">URL</a></td>
-        </tr>
-        <tr>
-            <td>0.2.0</td>
-            <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.2.0/jquery.geocodify.js">URL</a></td>
-            <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.2.0/jquery.geocodify.min.js">URL</a></td>
-            <td style="text-align:center;"><a href="http://datadesk.github.io/jquery-geocodify/_static/0.2.0/jquery.geocodify.css">URL</a></td>
-        </tr>
-        <tr>
-            <td>0.11</td>
-            <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.11/jquery.geocodify.js">URL</a></td>
-            <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.11/jquery.geocodify.min.js">URL</a></td>
-            <td style="text-align:center;">&mdash;</td>
-        </tr>
-        <tr>
-            <td>0.1</td>
-            <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.1/jquery.geocodify.js">URL</a></td>
-            <td style="text-align:center;"><a href="http://datadesk.github.com/jquery-geocodify/_static/0.1/jquery.geocodify.min.js">URL</a></td>
-            <td style="text-align:center;">&mdash;</td>
-        </tr>
-    </tbody>
-</table>
-
-<hr></div>
-<div class="section" id="demonstrations">
-<h2>Demonstrations<a class="headerlink" href="#demonstrations" title="Permalink to this headline">¶</a></h2>
-<p>Examples of jquery-geocodify in action. <a class="reference internal" href=""><em>Full documentation is elsewhere</em></a>.</p>
-<div class="section" id="the-basic-box">
-<h3>The basic box<a class="headerlink" href="#the-basic-box" title="Permalink to this headline">¶</a></h3>
-<form id="geocodify-basic-box"></form>
-<script type="text/javascript">
-     $("#geocodify-basic-box").geocodify({
-         onSelect: function (result) { alert(result); }
-     });
-</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-basic-box&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-basic-box&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
-         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">}</span>
-     <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-</pre></div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="howitworks.html">How it works</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howitworks.html#options">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="demonstrations.html">Demonstrations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="demonstrations.html#the-basic-box">The basic box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demonstrations.html#address-type-whitelisting">Address type whitelisting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demonstrations.html#filter-results">Filter results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demonstrations.html#initial-text">Initial text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demonstrations.html#no-results-text">No results text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demonstrations.html#minimum-characters">Minimum characters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demonstrations.html#prep-search-string">Prep search string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demonstrations.html#region-bias">Region bias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demonstrations.html#viewport-bias">Viewport bias</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+</ul>
 </div>
 </div>
-<div class="section" id="address-type-whitelisting">
-<h3>Address type whitelisting<a class="headerlink" href="#address-type-whitelisting" title="Permalink to this headline">¶</a></h3>
-<p>The whitelist of acceptable address types can be used to filter the results before they appear in the dropdown. In this example, the form is configured to only return airports. Try searching for &#8220;LAX&#8221; or &#8220;Charles De Gaulle.&#8221;</p>
-<form id="geocodify-address-type-whitelisting"></form>
-<script type="text/javascript">
-     $("#geocodify-address-type-whitelisting").geocodify({
-         onSelect: function (result) { alert(result); },
-         acceptableAddressTypes: [
-             'airport'
-         ],
-         minimumCharacters: 3
-     });
-</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-address-type-whitelisting&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-address-type-whitelisting&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
-         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
-         <span class="nx">acceptableAddressTypes</span><span class="o">:</span> <span class="p">[</span>
-             <span class="s1">&#39;airport&#39;</span>
-         <span class="p">],</span>
-         <span class="nx">minimumCharacters</span><span class="o">:</span> <span class="mi">3</span>
-     <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-</pre></div>
-</div>
-<hr></div>
-<div class="section" id="filter-results">
-<h3>Filter results<a class="headerlink" href="#filter-results" title="Permalink to this headline">¶</a></h3>
-<p>Geocoder results can be filtered before they appear in the dropdown by passing in a function. It should accept a list of Google geocoder objects and return whatever list you&#8217;d like to keep. This example drops any results that aren&#8217;t filed in Los Angeles County.</p>
-<form id="geocodify-filter-results"></form>
-<script type="text/javascript">
-     $("#geocodify-filter-results").geocodify({
-         onSelect: function (result) { alert(result); },
-         filterResults: function(results) {
-             return _.filter(results, function(addy) {
-                 return _.some(addy.address_components, function(component) {
-                     return component.long_name === 'Los Angeles County';
-                 });
-             });
-         }
-     });
-</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-filter-results&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-filter-results&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
-         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
-         <span class="nx">filterResults</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
-             <span class="c1">// Using some underscore.js tricks here to filter faster</span>
-             <span class="c1">// http://underscorejs.org/</span>
-             <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">results</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">addy</span><span class="p">)</span> <span class="p">{</span>
-                 <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">some</span><span class="p">(</span><span class="nx">addy</span><span class="p">.</span><span class="nx">address_components</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">component</span><span class="p">)</span> <span class="p">{</span>
-                     <span class="k">return</span> <span class="nx">component</span><span class="p">.</span><span class="nx">long_name</span> <span class="o">===</span> <span class="s1">&#39;Los Angeles County&#39;</span><span class="p">;</span>
-                 <span class="p">});</span>
-             <span class="p">});</span>
-         <span class="p">}</span>
-     <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-</pre></div>
-</div>
-<hr></div>
-<div class="section" id="initial-text">
-<h3>Initial text<a class="headerlink" href="#initial-text" title="Permalink to this headline">¶</a></h3>
-<p>You can provide a string to load when the box first appears.</p>
-<form id="geocodify-initial-text"></form>
-<script type="text/javascript">
-     $("#geocodify-initial-text").geocodify({
-         onSelect: function (result) { alert(result); },
-         initialText: "Enter an address"
-     });
-</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-initial-text&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-initial-text&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
-         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
-         <span class="nx">initialText</span><span class="o">:</span> <span class="s2">&quot;Enter an address&quot;</span>
-     <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-</pre></div>
-</div>
-<hr></div>
-<div class="section" id="no-results-text">
-<h3>No results text<a class="headerlink" href="#no-results-text" title="Permalink to this headline">¶</a></h3>
-<p>You can provide a string for the dropdown when no results return. Try searching some nonsense like &#8220;qwerty.&#8221;</p>
-<form id="geocodify-no-results-text"></form>
-<script type="text/javascript">
-     $("#geocodify-no-results-text").geocodify({
-         onSelect: function (result) { alert(result); },
-         noResultsText: "Nein!"
-     });
-</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-no-results-text&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-no-results-text&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
-         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
-         <span class="nx">noResultsText</span><span class="o">:</span> <span class="s2">&quot;Nein!&quot;</span>
-     <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-</pre></div>
-</div>
-<hr></div>
-<div class="section" id="minimum-characters">
-<h3>Minimum characters<a class="headerlink" href="#minimum-characters" title="Permalink to this headline">¶</a></h3>
-<p>Sets the number of characters that must be entered before the geocoder starts to automatically run. This example reduces the number to 2. Try searching &#8220;LAX.&#8221;</p>
-<form id="geocodify-minimum-characters"></form>
-<script type="text/javascript">
-     $("#geocodify-minimum-characters").geocodify({
-         onSelect: function (result) { alert(result); },
-         minimumCharacters: 2
-     });
-</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-minimum-characters&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-minimum-characters&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
-         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
-         <span class="nx">minimumCharacters</span><span class="o">:</span> <span class="mi">2</span>
-     <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-</pre></div>
-</div>
-<hr></div>
-<div class="section" id="prep-search-string">
-<h3>Prep search string<a class="headerlink" href="#prep-search-string" title="Permalink to this headline">¶</a></h3>
-<p>A function that treats the search string before it is passed to the geocoder. This example adds &#8220;California&#8221; to the search if the user has not provided it.</p>
-<form id="geocodify-prep-search-string"></form>
-<script type="text/javascript">
-     $("#geocodify-prep-search-string").geocodify({
-         onSelect: function (result) { alert(result); },
-         prepSearchString: function(query) {
-             var pattr = /\sca\s|\scalifornia\s/gi;
-             var match = query.match(pattr);
-             if (!match) {
-                 return query + ' California';
-             } else {
-                 return query;
-             }
-         }
-     });
-</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-prep-search-string&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-prep-search-string&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
-         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
-         <span class="nx">prepSearchString</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span> <span class="p">{</span>
-             <span class="kd">var</span> <span class="nx">pattr</span> <span class="o">=</span> <span class="sr">/\sca\s|\scalifornia\s/gi</span><span class="p">;</span>
-             <span class="kd">var</span> <span class="nx">match</span> <span class="o">=</span> <span class="nx">query</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">pattr</span><span class="p">);</span>
-             <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">match</span><span class="p">)</span> <span class="p">{</span>
-                 <span class="k">return</span> <span class="nx">query</span> <span class="o">+</span> <span class="s1">&#39; California&#39;</span><span class="p">;</span>
-             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                 <span class="k">return</span> <span class="nx">query</span><span class="p">;</span>
-             <span class="p">}</span>
-         <span class="p">}</span>
-     <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-</pre></div>
-</div>
-<hr></div>
-<div class="section" id="region-bias">
-<h3>Region bias<a class="headerlink" href="#region-bias" title="Permalink to this headline">¶</a></h3>
-<p>Instruct the geocoder to return results biased towards a particular region of the world. More information about the available codes can be found <a class="reference external" href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingRegionCodes">here</a>. This example biases results to Spain.</p>
-<form id="geocodify-region-bias"></form>
-<script type="text/javascript">
-     $("#geocodify-region-bias").geocodify({
-         onSelect: function (result) { alert(result); },
-         regionBias: "ES"
-     });
-</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-region-bias&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-region-bias&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
-         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
-         <span class="nx">regionBias</span><span class="o">:</span> <span class="s2">&quot;ES&quot;</span>
-     <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-</pre></div>
-</div>
-<hr></div>
-<div class="section" id="viewport-bias">
-<h3>Viewport bias<a class="headerlink" href="#viewport-bias" title="Permalink to this headline">¶</a></h3>
-<p>Instruct the geocoder to return results biased towards a bounding box presented in Google&#8217;s data format. Google&#8217;s documentation can be found <a class="reference external" href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingViewports">here</a>. This example biases results to a box surrounding Los Angeles County.</p>
-<form id="geocodify-viewport-bias"></form>
-<script type="text/javascript">
-     $("#geocodify-viewport-bias").geocodify({
-         onSelect: function (result) { alert(result); },
-         viewportBias: new google.maps.LatLngBounds(
-             new google.maps.LatLng(33.22030778968541,-118.948974609375),
-             new google.maps.LatLng(35.0120020431607,-117.44384765625)
-         )
-     });
-</script><div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;geocodify-viewport-bias&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-     <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#geocodify-viewport-bias&quot;</span><span class="p">).</span><span class="nx">geocodify</span><span class="p">({</span>
-         <span class="nx">onSelect</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="p">},</span>
-         <span class="nx">viewportBias</span><span class="o">:</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLngBounds</span><span class="p">(</span>
-             <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLng</span><span class="p">(</span><span class="mf">33.22030778968541</span><span class="p">,</span><span class="o">-</span><span class="mf">118.948974609375</span><span class="p">),</span>
-             <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLng</span><span class="p">(</span><span class="mf">35.0120020431607</span><span class="p">,</span><span class="o">-</span><span class="mf">117.44384765625</span><span class="p">)</span>
-         <span class="p">)</span>
-     <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
-<p>This library was created by <a class="reference external" href="https://github.com/palewire/">Ben Welsh</a> of the <a class="reference external" href="http://datadesk.github.com/">Los Angeles Times Data Desk</a>. Valuable contributions have been made by <a class="reference external" href="https://github.com/albertsun">albertsun</a> and <a class="reference external" href="https://github.com/unruthless">unruthless</a>. Inspiration was provided by the <a class="reference external" href="https://github.com/newsapps">Chicago Tribune News Applications team</a>.</p>
+<div class="section" id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Code repository: <a class="reference external" href="https://github.com/datadesk/jquery-geocodify">https://github.com/datadesk/python-documentcloud</a></li>
+<li>Issues: <a class="reference external" href="https://github.com/datadesk/jquery-geocodify/issues">https://github.com/datadesk/python-documentcloud/issues</a></li>
+</ul>
 </div>
 </div>
 
@@ -501,26 +178,15 @@
 <li><a class="reference internal" href="#">jquery-geocodify</a><ul>
 <li><a class="reference internal" href="#features">Features</a></li>
 <li><a class="reference internal" href="#example">Example</a></li>
-<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
-<li><a class="reference internal" href="#configuration">Configuration</a></li>
-<li><a class="reference internal" href="#downloads">Downloads</a></li>
-<li><a class="reference internal" href="#demonstrations">Demonstrations</a><ul>
-<li><a class="reference internal" href="#the-basic-box">The basic box</a></li>
-<li><a class="reference internal" href="#address-type-whitelisting">Address type whitelisting</a></li>
-<li><a class="reference internal" href="#filter-results">Filter results</a></li>
-<li><a class="reference internal" href="#initial-text">Initial text</a></li>
-<li><a class="reference internal" href="#no-results-text">No results text</a></li>
-<li><a class="reference internal" href="#minimum-characters">Minimum characters</a></li>
-<li><a class="reference internal" href="#prep-search-string">Prep search string</a></li>
-<li><a class="reference internal" href="#region-bias">Region bias</a></li>
-<li><a class="reference internal" href="#viewport-bias">Viewport bias</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#credits">Credits</a></li>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#contributing">Contributing</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Next topic</h4>
+  <p class="topless"><a href="howitworks.html"
+                        title="next chapter">How it works</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"
@@ -549,6 +215,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="howitworks.html" title="How it works"
+             >next</a> |</li>
         <li><a href="#">jquery-geocodify 0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
