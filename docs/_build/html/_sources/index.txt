@@ -19,6 +19,8 @@
             vertical-align: top !important;
             width: 315px !important;
             z-index: 9002 !important;
+            box-sizing: content-box;
+            -moz-box-sizing: content-box
         }
     </style>
 
