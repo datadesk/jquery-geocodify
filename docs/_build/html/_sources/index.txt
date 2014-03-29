@@ -22,6 +22,16 @@
             box-sizing: content-box;
             -moz-box-sizing: content-box
         }
+        .geocodifyDropdown li {
+            cursor: pointer !important;
+            display: block !important;
+            font-family: inherit !important;
+            font-size: 100% !important;
+            list-style-type: none !important;
+            margin: 0 !important;
+            padding: 5px 0 5px 8px !important;
+            text-align: left !important;
+        }
     </style>
 
 ================
