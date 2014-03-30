@@ -32,6 +32,9 @@
             padding: 5px 0 5px 8px !important;
             text-align: left !important;
         }
+        .highlight-html {
+            margin-top: 10px;
+        }
     </style>
 
 Demonstrations

@@ -10,7 +10,7 @@
             color: #000000 !important;
             font-family: inherit !important;
             font-size: 14px !important;
-            height: 14px !important;
+            height: 16px !important;
             line-height: 20px !important;
             margin: 0 !important;
             outline: medium none !important;

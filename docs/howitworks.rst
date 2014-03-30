@@ -26,89 +26,42 @@ The example above will just alert the selected address in the browser. It's a Ja
 Options
 -------
 
-**Required arguments**
+.. attribute:: onSelect
 
-.. raw:: html
+    A function that takes the Google geocoder's result object and decides what to do with it, like it load it on a map, or redirect to another page, or whatever you need. Required.
 
-    <table>
-        <thead>
-            <tr>
-                <th>Option</th>
-                <th>Use</th>
-                <th>Default</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><em>onSelect</em></td>
-                <td>
-                    A function that takes the Google geocoder's result object and decides what to do with it, like it load it on a map, or redirect to another page, or whatever you need.
-                </td>
-                <td>An ugly alert with the result's address.</td>
-            </tr>
-        </tbody>
-    </table>
+.. attribute:: acceptableAddressTypes
 
-**Optional arguments**
+    A whitelist of address types allowed to appear in the results. Drawn from `the set defined by Google's geocoder <http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingAddressTypes>`_. Optional. All types accepted by default.
 
-.. raw:: html
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Option</th>
-                <th>Use</th>
-                <th>Default</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><em>acceptableAddressTypes</em></td>
-                <td>
-                    A whitelist of address types allowed to appear in the results.
-                    Drawn from <a href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingAddressTypes">the set defined by Google's geocoder</a>.
-                </td>
-                <td>All types accepted</td>
-            </tr>
-            <tr>
-                <td><em>errorHandler</em></td>
-                <td>A function for handling errors returned by the Google geocoder.</td>
-                <td>null</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td><em>filterResults</em></td>
-                <td>A function for filtering results before they appear in the dropdown.</td>
-                <td>null</td>
-            </tr>
-            <tr>
-                <td><em>initialText</em></td>
-                <td>Sets a default string to appear when the box loads.</td>
-                <td>null</td>
-            </tr>
-            <tr>
-                <td><em>minimumCharacters</em></td>
-                <td>Sets the number of characters that must be entered before the geocoder starts to automatically run.</td>
-                <td>5</td>
-            <tr>
-                <td><em>noResultsText</em></td>
-                <td>The text that appears when a search returns no results.</td>
-                <td>"No results found. Please refine your search."</td>
-            </tr>
-            <tr>
-                <td><em>prepSearchString</em></td>
-                <td>A function that treats the search string before it is passed to the geocoder.</td>
-                <td>null</td>
-            </tr>
-            <tr>
-                <td><em>regionBias</em></td>
-                <td>Instruct the geocoder to return results biased towards a particular region of the world. More information about the available codes can be found <a href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingRegionCodes">here</a>.</td>
-                <td>null</td>
-            </tr>
-            <tr>
-                <td><em>viewportBias</em></td>
-                <td>Instruct the geocoder to return results biased towards a bounding box presented in Google's data format. Google's documentation can be found <a href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingViewports">here</a>.</td>
-                <td>null</td>
-            </tr>
-        </tbody>
-    </table>
+.. attribute:: errorHandler
+
+    A function for handling errors returned by the Google geocoder. Optional. Null by default.
+
+.. attribute:: filterResults
+
+    A function for filtering results before they appear in the dropdown. Optional. Null by default.
+
+.. attribute:: initialText
+
+    Sets a default string to appear when the box loads. Optional. Blank by default.
+
+.. attribute:: minimumCharacters
+
+    Sets the number of characters that must be entered before the geocoder starts to automatically run. Optional. The default is five.
+
+.. attribute:: noResultsText
+
+    The text that appears when a search returns no results. Optional. The default is "No results found. Please refine your search."
+
+.. attribute:: prepSearchString
+
+    A function that treats the search string before it is passed to the geocoder. Optional. Null by default.
+
+.. attribute:: regionBias
+
+    Instruct the geocoder to return results biased towards a particular region of the world. More information about the available codes can be found `here <http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingRegionCodes>`_. Optional. Null by default.
+
+.. attribute:: viewportBias
+
+    Instruct the geocoder to return results biased towards a bounding box presented in Google's data format. Google's documentation can be found `here <http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingViewports>`_. Optional. Null by default.

@@ -70,84 +70,67 @@
 <p>The example above will just alert the selected address in the browser. It&#8217;s a JavaScript representation of what is returned by <a class="reference external" href="http://code.google.com/apis/maps/documentation/geocoding/#GeocodingResponses">the Google Maps geocoder.</a></p>
 <div class="section" id="options">
 <h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
-<p><strong>Required arguments</strong></p>
-<table>
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Use</th>
-            <th>Default</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><em>onSelect</em></td>
-            <td>
-                A function that takes the Google geocoder's result object and decides what to do with it, like it load it on a map, or redirect to another page, or whatever you need.
-            </td>
-            <td>An ugly alert with the result's address.</td>
-        </tr>
-    </tbody>
-</table><p><strong>Optional arguments</strong></p>
-<table>
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Use</th>
-            <th>Default</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><em>acceptableAddressTypes</em></td>
-            <td>
-                A whitelist of address types allowed to appear in the results.
-                Drawn from <a href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingAddressTypes">the set defined by Google's geocoder</a>.
-            </td>
-            <td>All types accepted</td>
-        </tr>
-        <tr>
-            <td><em>errorHandler</em></td>
-            <td>A function for handling errors returned by the Google geocoder.</td>
-            <td>null</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><em>filterResults</em></td>
-            <td>A function for filtering results before they appear in the dropdown.</td>
-            <td>null</td>
-        </tr>
-        <tr>
-            <td><em>initialText</em></td>
-            <td>Sets a default string to appear when the box loads.</td>
-            <td>null</td>
-        </tr>
-        <tr>
-            <td><em>minimumCharacters</em></td>
-            <td>Sets the number of characters that must be entered before the geocoder starts to automatically run.</td>
-            <td>5</td>
-        <tr>
-            <td><em>noResultsText</em></td>
-            <td>The text that appears when a search returns no results.</td>
-            <td>"No results found. Please refine your search."</td>
-        </tr>
-        <tr>
-            <td><em>prepSearchString</em></td>
-            <td>A function that treats the search string before it is passed to the geocoder.</td>
-            <td>null</td>
-        </tr>
-        <tr>
-            <td><em>regionBias</em></td>
-            <td>Instruct the geocoder to return results biased towards a particular region of the world. More information about the available codes can be found <a href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingRegionCodes">here</a>.</td>
-            <td>null</td>
-        </tr>
-        <tr>
-            <td><em>viewportBias</em></td>
-            <td>Instruct the geocoder to return results biased towards a bounding box presented in Google's data format. Google's documentation can be found <a href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingViewports">here</a>.</td>
-            <td>null</td>
-        </tr>
-    </tbody>
-</table></div>
+<dl class="attribute">
+<dt id="onSelect">
+<tt class="descname">onSelect</tt><a class="headerlink" href="#onSelect" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that takes the Google geocoder&#8217;s result object and decides what to do with it, like it load it on a map, or redirect to another page, or whatever you need. Required.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="acceptableAddressTypes">
+<tt class="descname">acceptableAddressTypes</tt><a class="headerlink" href="#acceptableAddressTypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>A whitelist of address types allowed to appear in the results. Drawn from <a class="reference external" href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingAddressTypes">the set defined by Google&#8217;s geocoder</a>. Optional. All types accepted by default.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="errorHandler">
+<tt class="descname">errorHandler</tt><a class="headerlink" href="#errorHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function for handling errors returned by the Google geocoder. Optional. Null by default.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="filterResults">
+<tt class="descname">filterResults</tt><a class="headerlink" href="#filterResults" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function for filtering results before they appear in the dropdown. Optional. Null by default.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="initialText">
+<tt class="descname">initialText</tt><a class="headerlink" href="#initialText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a default string to appear when the box loads. Optional. Blank by default.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="minimumCharacters">
+<tt class="descname">minimumCharacters</tt><a class="headerlink" href="#minimumCharacters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the number of characters that must be entered before the geocoder starts to automatically run. Optional. The default is five.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="noResultsText">
+<tt class="descname">noResultsText</tt><a class="headerlink" href="#noResultsText" title="Permalink to this definition">¶</a></dt>
+<dd><p>The text that appears when a search returns no results. Optional. The default is &#8220;No results found. Please refine your search.&#8221;</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="prepSearchString">
+<tt class="descname">prepSearchString</tt><a class="headerlink" href="#prepSearchString" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that treats the search string before it is passed to the geocoder. Optional. Null by default.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="regionBias">
+<tt class="descname">regionBias</tt><a class="headerlink" href="#regionBias" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instruct the geocoder to return results biased towards a particular region of the world. More information about the available codes can be found <a class="reference external" href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingRegionCodes">here</a>. Optional. Null by default.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="viewportBias">
+<tt class="descname">viewportBias</tt><a class="headerlink" href="#viewportBias" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instruct the geocoder to return results biased towards a bounding box presented in Google&#8217;s data format. Google&#8217;s documentation can be found <a class="reference external" href="http://code.google.com/apis/maps/documentation/javascript/services.html#GeocodingViewports">here</a>. Optional. Null by default.</p>
+</dd></dl>
+
+</div>
 </div>
 
 
