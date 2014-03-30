@@ -105,10 +105,11 @@ Documentation
 
    howitworks
    demonstrations
+   changelog
    credits
 
 Contributing
 ------------
 
-* Code repository: `https://github.com/datadesk/python-documentcloud <https://github.com/datadesk/jquery-geocodify>`_
-* Issues: `https://github.com/datadesk/python-documentcloud/issues <https://github.com/datadesk/jquery-geocodify/issues>`_
+* Code repository: `https://github.com/datadesk/jquery-geocodify <https://github.com/datadesk/jquery-geocodify>`_
+* Issues: `https://github.com/datadesk/jquery-geocodify/issues <https://github.com/datadesk/jquery-geocodify/issues>`_
