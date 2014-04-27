@@ -172,12 +172,17 @@
                 };
             };
 
-            // Bind our geocoding operation to the form
-            setInterval(function() {
-                $this.fetch($input.val(), false);
-            }, 250);
-            $this.submit(function() {
-                return false;
+            // Bind our geocoding operation to the input entry
+            $this.on("keyup", function () {
+                $this.fetch($this.val(), false);
+            });
+
+            // Bind dropdown reset to input unfocus
+            $this.on("blur", function () {
+                // Small delay so that script can carry out other actions (like selecting a dropdown entry)
+                window.setTimeout(function () {
+                    $this.reset();
+                }, 200);
             });
 
             // Bind key up and down events
