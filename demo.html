@@ -4,6 +4,28 @@
         body { font-family: Arial, sans-serif; font-size:13px; }
     </style>
     <link rel="stylesheet" href="jquery.geocodify.css"/>
+    <style>
+        #geocoder {
+            width: 315px;
+            height: 14px;
+            font-size: 14px;
+            line-height: 20px;
+            border: 1px solid #ccc;
+            outline: none;
+            vertical-align: top;
+            padding: 9px 5px;
+            margin: 0;
+            position: relative;
+            z-index: 9002;
+            color: black;
+            font-family: inherit;
+            box-sizing:inherit;
+        }
+
+        #geocoder:focus {
+            border: 1px solid #2262CC;
+        }
+    </style>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
@@ -39,6 +61,11 @@
                 });
             }
         });
+
+        // Prevent demo form from submitting
+        $('form').on('submit', function (e) {
+            e.preventDefault();
+        })
     </script>
 </body>
 </html>
