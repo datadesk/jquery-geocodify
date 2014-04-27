@@ -1,25 +1,4 @@
-.geocodifyInput {
-    width: 315px;
-    height: 14px;
-    font-size: 14px;
-    line-height: 20px;
-    border: 1px solid #ccc;
-    outline: none;
-    vertical-align: top;
-    padding: 9px 5px;
-    margin: 0;
-    position: relative;
-    z-index: 9002;
-    color: black;
-    font-family: inherit;
-    box-sizing:inherit;
-}
-
-.geocodifyInput:focus {
-    border: 1px solid #2262CC;
-}
-
-.geocodifyDropdown {
+.geocodify-dropdown {
     position: absolute;
     display:block;
     z-index: 9003;
@@ -32,14 +11,16 @@
     -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    max-height: 250px;
+    overflow: scroll;
 }
 
-.geocodifyDropdown ul {
+.geocodify-dropdown ul {
     margin: 0 !important;
     padding: 0 !important;
 }
 
-.geocodifyDropdown li {
+.geocodify-dropdown li {
     display: block;
     padding: 5px 0 5px 8px;
     cursor: pointer;

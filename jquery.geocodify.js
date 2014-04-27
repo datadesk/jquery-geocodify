@@ -1,5 +1,6 @@
-
 (function($) {
+    'use strict';
+
     $.fn.geocodify = function(options) {
         var settings = {
             'regionBias': null,
@@ -11,7 +12,6 @@
             'prepSearchString': null,
             'filterResults': null,
             'errorHandler': null,
-            'initialText': null,
             'noResultsText': "No results found. Please refine your search.",
             'acceptableAddressTypes': ['street_address', 'route', 'intersection', 'political', 'country', 'administrative_area_level_1', 'administrative_area_level_2', 'administrative_area_level_3 ', 'colloquial_area', 'locality', 'sublocality', 'neighborhood', 'premise', 'subpremise', 'postal_code', 'natural_feature', 'airport', 'park', 'point_of_interest', 'post_box', 'street_number', 'floor', 'room'],
             'keyCodes': {
@@ -30,8 +30,7 @@
 
         return this.each(function() {
             var $this = $(this),
-                inputId = $this.attr("id") + "-input",
-                input,
+                $input = $this,
                 dropdownId = $this.attr("id") + "-dropdown",
                 dropdown;
 
@@ -39,36 +38,18 @@
                 $.extend(settings, options);
             }
 
-            // Clear out any existing stuff inside the form and set its style
-            $this.empty();
-            document.getElementById($this.attr("id")).setAttribute("autocomplete", "off");
-
-            // Add a text input
-            $('<input>')
-                .attr({
-                type: 'text',
-                id: inputId
-            })
-                .addClass("geocodifyInput")
-                .appendTo($this);
-            document.getElementById(inputId).setAttribute("autocomplete", "off");
-            input = $("#" + inputId);
-
-            // Fill in initialText, if it is specified
-            if (settings.initialText) {
-                if (settings.initialText) {
-                    input.attr('placeholder', settings.initialText);
-                }
-            }
+            // Ensure that autocomplete is turned off on input field
+            $input.attr("autocomplete", "off");
 
             // Add the dropdown box
             $("<div>")
                 .attr({
-                id: dropdownId
-            })
-                .addClass("geocodifyDropdown")
+                    id: dropdownId
+                })
+                .addClass("geocodify-dropdown")
                 .hide()
-                .appendTo($this);
+                .insertAfter($input);
+
             dropdown = $("#" + dropdownId);
 
             // Define what will happen when the form is reset
@@ -84,10 +65,6 @@
             $this.fetch = function(query, force) {
 
                 if (query === $this.previousSearch && force !== true) {
-                    return false;
-                }
-
-                if (query === settings.initialText) {
                     return false;
                 }
 
@@ -166,7 +143,7 @@
                         settings.onSelect(keep[0]);
                         $this.reset();
                         $this.previousSearch = results[0].formatted_address;
-                        input.val(keep[0].formatted_address);
+                        $input.val(keep[0].formatted_address);
                     } else {
                         ul = $("<ul>");
                         $.each(keep, function(i, val) {
@@ -176,7 +153,7 @@
                                 settings.onSelect(val);
                                 $this.reset();
                                 $this.previousSearch = val.formatted_address;
-                                input.val(val.formatted_address);
+                                $input.val(val.formatted_address);
                             })
                                 .hover(
 
@@ -197,7 +174,7 @@
 
             // Bind our geocoding operation to the form
             setInterval(function() {
-                $this.fetch(input.val(), false);
+                $this.fetch($input.val(), false);
             }, 250);
             $this.submit(function() {
                 return false;
@@ -242,7 +219,7 @@
                         if (resultList) {
                             resultList.click();
                         } else {
-                            $this.fetch(input.val(), true);
+                            $this.fetch($input.val(), true);
                         }
                         break;
                     default:
@@ -252,4 +229,4 @@
 
         });
     };
-})(jQuery); 
+})(jQuery);

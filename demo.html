@@ -12,7 +12,9 @@
 <body>
     <div>
         <h1>Headline here</h1>
-        <div id="geocoder"></div>
+        <form>
+            <input id="geocoder" placeholder="Enter an address..."></input>
+        </form>
         <p>Text goes here and should appear under the dropdown when it shows up.</p>
     </div>
     <script type="text/javascript">
@@ -21,10 +23,9 @@
         var minX = -118.685302734375;
         var maxX = -118.10302734375;
         $("#geocoder").geocodify({
-            onSelect: function (result) { 
+            onSelect: function (result) {
                 console.log(result);
             },
-            initialText: "Enter an address in the Los Angeles city limits",
             regionBias: 'US',
             viewportBias: new google.maps.LatLngBounds(
                  new google.maps.LatLng(33.22030778968541,-118.948974609375),
