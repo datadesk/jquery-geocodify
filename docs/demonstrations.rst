@@ -1,41 +1,24 @@
 .. raw:: html
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://s3.amazonaws.com/latimes-datadesk-template/css/jquery.geocodify-2.0.css"/>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <script type="text/javascript" src="https://s3.amazonaws.com/latimes-datadesk-template/js/jquery.geocodify-0.2-min.js"></script>
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
     <style type="text/css">
-        .geocodifyInput {
-            border: 1px solid #CCCCCC !important;
-            color: #000000 !important;
-            font-family: inherit !important;
-            font-size: 14px !important;
-            height: 14px !important;
-            line-height: 20px !important;
-            margin: 0 !important;
-            outline: medium none !important;
-            padding: 9px 5px !important;
-            position: relative !important;
-            vertical-align: top !important;
-            width: 315px !important;
-            z-index: 9002 !important;
-            box-sizing: content-box;
-            -moz-box-sizing: content-box
-        }
-        .geocodifyDropdown li {
-            cursor: pointer !important;
-            display: block !important;
-            font-family: inherit !important;
-            font-size: 100% !important;
-            list-style-type: none !important;
-            margin: 0 !important;
-            padding: 5px 0 5px 8px !important;
-            text-align: left !important;
-        }
-        .highlight-html {
-            margin-top: 10px;
-        }
+
+.. raw:: html
+   :file: ../jquery.geocodify.css
+
+.. raw:: html
+
     </style>
+    <script type="text/javascript">
+
+.. raw:: html
+   :file: ../jquery.geocodify.js
+
+.. raw:: html
+
+    </script>
 
 Demonstrations
 ==============
@@ -47,7 +30,7 @@ The basic box
 
 .. raw:: html
 
-   <form id="geocodify-basic-box"></form>
+   <input id="geocodify-basic-box"></input>
    <script type="text/javascript">
         $("#geocodify-basic-box").geocodify({
             onSelect: function (result) { alert(result); }
@@ -56,7 +39,7 @@ The basic box
 
 .. code-block:: html
 
-   <form id="geocodify-basic-box"></form>
+   <input id="geocodify-basic-box"></input>
    <script type="text/javascript">
         $("#geocodify-basic-box").geocodify({
             onSelect: function (result) { alert(result); }
@@ -66,11 +49,11 @@ The basic box
 Address type whitelisting
 -------------------------
 
-The whitelist of acceptable address types can be used to filter the results before they appear in the dropdown. In this example, the form is configured to only return airports. Try searching for "LAX" or "Charles De Gaulle."
+The whitelist of acceptable address types can be used to filter the results before they appear in the dropdown. In this example, the input is configured to only return airports. Try searching for "LAX" or "Charles De Gaulle."
 
 .. raw:: html
 
-   <form id="geocodify-address-type-whitelisting"></form>
+   <input id="geocodify-address-type-whitelisting"></input>
    <script type="text/javascript">
         $("#geocodify-address-type-whitelisting").geocodify({
             onSelect: function (result) { alert(result); },
@@ -83,7 +66,7 @@ The whitelist of acceptable address types can be used to filter the results befo
 
 .. code-block:: html
 
-   <form id="geocodify-address-type-whitelisting"></form>
+   <input id="geocodify-address-type-whitelisting"></input>
    <script type="text/javascript">
         $("#geocodify-address-type-whitelisting").geocodify({
             onSelect: function (result) { alert(result); },
@@ -105,7 +88,7 @@ Geocoder results can be filtered before they appear in the dropdown by passing i
 
 .. raw:: html
 
-   <form id="geocodify-filter-results"></form>
+   <input id="geocodify-filter-results"></input>
    <script type="text/javascript">
         $("#geocodify-filter-results").geocodify({
             onSelect: function (result) { alert(result); },
@@ -121,7 +104,7 @@ Geocoder results can be filtered before they appear in the dropdown by passing i
 
 .. code-block:: html
 
-   <form id="geocodify-filter-results"></form>
+   <input id="geocodify-filter-results"></input>
    <script type="text/javascript">
         $("#geocodify-filter-results").geocodify({
             onSelect: function (result) { alert(result); },
@@ -148,21 +131,19 @@ You can provide a string to load when the box first appears.
 
 .. raw:: html
 
-   <form id="geocodify-initial-text"></form>
+   <input id="geocodify-initial-text" placeholder="Enter an address"></input>
    <script type="text/javascript">
         $("#geocodify-initial-text").geocodify({
-            onSelect: function (result) { alert(result); },
-            initialText: "Enter an address"
+            onSelect: function (result) { alert(result); }
         });
    </script>
 
 .. code-block:: html
 
-   <form id="geocodify-initial-text"></form>
+   <input id="geocodify-initial-text" placeholder="Enter an address"></input>
    <script type="text/javascript">
         $("#geocodify-initial-text").geocodify({
             onSelect: function (result) { alert(result); },
-            initialText: "Enter an address"
         });
    </script>
 
@@ -177,7 +158,7 @@ You can provide a string for the dropdown when no results return. Try searching 
 
 .. raw:: html
 
-   <form id="geocodify-no-results-text"></form>
+   <input id="geocodify-no-results-text"></input>
    <script type="text/javascript">
         $("#geocodify-no-results-text").geocodify({
             onSelect: function (result) { alert(result); },
@@ -187,7 +168,7 @@ You can provide a string for the dropdown when no results return. Try searching 
 
 .. code-block:: html
 
-   <form id="geocodify-no-results-text"></form>
+   <input id="geocodify-no-results-text"></input>
    <script type="text/javascript">
         $("#geocodify-no-results-text").geocodify({
             onSelect: function (result) { alert(result); },
@@ -206,7 +187,7 @@ Sets the number of characters that must be entered before the geocoder starts to
 
 .. raw:: html
 
-   <form id="geocodify-minimum-characters"></form>
+   <input id="geocodify-minimum-characters"></input>
    <script type="text/javascript">
         $("#geocodify-minimum-characters").geocodify({
             onSelect: function (result) { alert(result); },
@@ -216,7 +197,7 @@ Sets the number of characters that must be entered before the geocoder starts to
 
 .. code-block:: html
 
-   <form id="geocodify-minimum-characters"></form>
+   <input id="geocodify-minimum-characters"></input>
    <script type="text/javascript">
         $("#geocodify-minimum-characters").geocodify({
             onSelect: function (result) { alert(result); },
@@ -235,7 +216,7 @@ A function that treats the search string before it is passed to the geocoder. Th
 
 .. raw:: html
 
-   <form id="geocodify-prep-search-string"></form>
+   <input id="geocodify-prep-search-string"></input>
    <script type="text/javascript">
         $("#geocodify-prep-search-string").geocodify({
             onSelect: function (result) { alert(result); },
@@ -253,7 +234,7 @@ A function that treats the search string before it is passed to the geocoder. Th
 
 .. code-block:: html
 
-   <form id="geocodify-prep-search-string"></form>
+   <input id="geocodify-prep-search-string"></input>
    <script type="text/javascript">
         $("#geocodify-prep-search-string").geocodify({
             onSelect: function (result) { alert(result); },
@@ -280,7 +261,7 @@ Instruct the geocoder to return results biased towards a particular region of th
 
 .. raw:: html
 
-   <form id="geocodify-region-bias"></form>
+   <input id="geocodify-region-bias"></input>
    <script type="text/javascript">
         $("#geocodify-region-bias").geocodify({
             onSelect: function (result) { alert(result); },
@@ -290,7 +271,7 @@ Instruct the geocoder to return results biased towards a particular region of th
 
 .. code-block:: html
 
-   <form id="geocodify-region-bias"></form>
+   <input id="geocodify-region-bias"></input>
    <script type="text/javascript">
         $("#geocodify-region-bias").geocodify({
             onSelect: function (result) { alert(result); },
@@ -309,7 +290,7 @@ Instruct the geocoder to return results biased towards a bounding box presented 
 
 .. raw:: html
 
-   <form id="geocodify-viewport-bias"></form>
+   <input id="geocodify-viewport-bias"></input>
    <script type="text/javascript">
         $("#geocodify-viewport-bias").geocodify({
             onSelect: function (result) { alert(result); },
@@ -322,7 +303,7 @@ Instruct the geocoder to return results biased towards a bounding box presented 
 
 .. code-block:: html
 
-   <form id="geocodify-viewport-bias"></form>
+   <input id="geocodify-viewport-bias"></input>
    <script type="text/javascript">
         $("#geocodify-viewport-bias").geocodify({
             onSelect: function (result) { alert(result); },
