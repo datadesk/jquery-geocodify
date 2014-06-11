@@ -1,4 +1,4 @@
-#geocoder {
+input.geocodify {
     width: 315px;
     height: 14px;
     font-size: 14px;
@@ -13,6 +13,8 @@
     color: black;
     font-family: inherit;
     box-sizing:inherit;
+    text-align: start;
+    direction: ltr;
 }
 
 .geocodify-dropdown {

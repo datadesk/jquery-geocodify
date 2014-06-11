@@ -39,7 +39,7 @@
             }
 
             // Ensure that autocomplete is turned off on input field
-            $input.attr("autocomplete", "off");
+            $input.attr("autocomplete", "off").addClass("geocodify");
 
             // Add the dropdown box
             $("<div>")
