@@ -1,0 +1,26 @@
+{
+  "name": "jquery-geocodify",
+  "version": "0.3.0",
+  "main": [
+    "jquery.geocodify.css",
+    "jquery.geocodify.js"
+  ],
+  "homepage": "https://github.com/datadesk/jquery-geocodify",
+  "authors": [
+    "palewire <ben.welsh@gmail.com>"
+  ],
+  "description": "Autocomplete for address searches",
+  "keywords": [
+    "jquery",
+    "geocoding",
+    "location",
+    "searches"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
