@@ -15,6 +15,10 @@
     overflow: scroll;
 }
 
+div.geocodify-dropdown {
+    overflow: hidden;
+}
+
 .geocodify-dropdown ul {
     margin: 0 !important;
     padding: 0 !important;
