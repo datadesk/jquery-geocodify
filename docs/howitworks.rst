@@ -7,9 +7,11 @@ Import all the dependencies in your page's head
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
     <!-- These next two you should host by yourself in production -->
-    <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/datadesk/jquery-geocodify/gh-pages/_static/0.2.0/jquery.geocodify.css"/>
-    <script type="text/javascript" src="https://raw.githubusercontent.com/datadesk/jquery-geocodify/gh-pages/_static/0.2.0/jquery.geocodify.min.js"></script>
+    <!-- Download the latest version here https://github.com/datadesk/jquery-geocodify/releases -->
+    <link rel="stylesheet" src="/path/to/jquery.geocodify.css" /> 
+    <script type="text/javascript" src="/path/to/jquery.geocodify.min.js"></script> 
 
 Add an empty form to your page's body and initialize it with instructions for what function to run when the user selects an address
 
