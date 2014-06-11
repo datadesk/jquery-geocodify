@@ -43,10 +43,6 @@ Options
 
     A function for filtering results before they appear in the dropdown. Optional. Null by default.
 
-.. attribute:: initialText
-
-    Sets a default string to appear when the box loads. Optional. Blank by default.
-
 .. attribute:: minimumCharacters
 
     Sets the number of characters that must be entered before the geocoder starts to automatically run. Optional. The default is five.
