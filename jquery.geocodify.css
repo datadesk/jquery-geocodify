@@ -17,6 +17,10 @@ input.geocodify {
     direction: ltr;
 }
 
+input.geocodify:focus {
+    border: 1px solid #2262CC;
+}
+
 .geocodify-dropdown {
     position: absolute;
     display:block;
