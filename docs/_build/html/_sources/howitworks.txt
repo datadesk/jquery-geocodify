@@ -15,7 +15,7 @@ Add an empty form to your page's body and initialize it with instructions for wh
 
 .. code-block:: html
 
-    <form id="geocoder"></form>
+    <input id="geocoder" placeholder="Enter a location ..."></input>
     <script type="text/javascript">
         $("#geocoder").geocodify({
             onSelect: function (result) { alert(result); } 

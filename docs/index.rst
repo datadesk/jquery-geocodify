@@ -78,7 +78,7 @@ Example
           });
         </script>
     </div>
-    <div style="height:300px; width:100%; border:1px dotted #ddd; margin-bottom: 25px;" id="map"></div>
+    <div style="height:300px; width:100%; border:1px dotted #ddd; margin: 5px 0 25px 0;" id="map"></div>
 
 
 Documentation
