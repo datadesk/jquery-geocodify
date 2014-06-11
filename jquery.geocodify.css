@@ -44,9 +44,9 @@ input.geocodify:focus {
 
 .geocodify-dropdown li {
     display: block;
-    padding: 5px 0 5px 8px;
+    padding: 5px 0 5px 8px !important;
     cursor: pointer;
-    margin: 0;
+    margin: 0 !important;
     list-style-type: none;
     text-align: left;
     font-size: 16px;
