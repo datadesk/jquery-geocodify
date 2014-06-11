@@ -18,9 +18,7 @@
 <body>
     <div>
         <h1>Headline here</h1>
-        <form>
-            <input id="geocoder" placeholder="Enter an address in L.A. city limits"></input>
-        </form>
+        <input id="geocoder" placeholder="Enter an address in L.A. city limits"></input>
         <p>Text goes here and should appear under the dropdown when it shows up.</p>
     </div>
     <script type="text/javascript">
@@ -45,11 +43,6 @@
                 });
             }
         });
-
-        // Prevent demo form from submitting
-        $('form').on('submit', function (e) {
-            e.preventDefault();
-        })
     </script>
 </body>
 </html>
